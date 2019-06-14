@@ -1,0 +1,261 @@
+2019-06-13 04:15:35,827 - com.mobiotics.HITSAdmin.login.LoginDemo -INFO - initializing framework
+2019-06-13 04:17:13,199 - com.mobiotics.HITSAdmin.login.LoginDemo -INFO - initializing framework
+2019-06-13 04:17:37,116 - com.mobiotics.HITSAdmin.login.LoginDemo -INFO - implicit login
+2019-06-13 04:17:43,716 - com.mobiotics.HITSAdmin.login.LoginDemo -INFO - user successfully logged in
+2019-06-13 04:17:43,730 - com.mobiotics.HITSAdmin.login.LoginDemo -INFO - TimeOut:30
+2019-06-13 04:17:43,763 - com.mobiotics.HITSAdmin.login.LoginDemo -INFO - implicit login
+2019-06-13 04:19:10,956 - com.mobiotics.HITSAdmin.login.LoginDemo -INFO - initializing framework
+2019-06-13 04:19:18,937 - com.mobiotics.HITSAdmin.login.LoginDemo -INFO - implicit login
+2019-06-13 04:19:24,780 - com.mobiotics.HITSAdmin.login.LoginDemo -INFO - user successfully logged in
+2019-06-13 04:19:24,795 - com.mobiotics.HITSAdmin.login.LoginDemo -INFO - TimeOut:30
+2019-06-13 04:19:44,720 - com.mobiotics.HITSAdmin.login.LoginDemo -INFO - initializing framework
+2019-06-13 04:19:52,076 - com.mobiotics.HITSAdmin.login.LoginDemo -INFO - implicit login
+2019-06-13 04:19:57,886 - com.mobiotics.HITSAdmin.login.LoginDemo -INFO - user successfully logged in
+2019-06-13 04:19:57,901 - com.mobiotics.HITSAdmin.login.LoginDemo -INFO - TimeOut:30
+2019-06-13 08:40:33,522 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - initializing framework
+2019-06-13 08:40:49,638 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - implicit login
+2019-06-13 08:40:55,852 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - user successfully logged in
+2019-06-13 08:40:55,854 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - TimeOut:30
+2019-06-13 08:42:06,494 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - initializing framework
+2019-06-13 08:42:19,030 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - implicit login
+2019-06-13 08:42:24,976 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - user successfully logged in
+2019-06-13 08:42:24,979 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - TimeOut:30
+2019-06-13 08:44:33,181 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - initializing framework
+2019-06-13 08:44:47,141 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - implicit login
+2019-06-13 08:44:53,305 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - user successfully logged in
+2019-06-13 08:44:53,307 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - TimeOut:30
+2019-06-13 08:46:21,995 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - initializing framework
+2019-06-13 08:46:35,115 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - implicit login
+2019-06-13 08:46:41,214 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - user successfully logged in
+2019-06-13 08:46:41,216 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - TimeOut:30
+2019-06-13 08:48:51,172 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - initializing framework
+2019-06-13 08:49:00,793 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - implicit login
+2019-06-13 08:49:06,676 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - user successfully logged in
+2019-06-13 08:49:06,689 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - TimeOut:30
+2019-06-13 08:49:41,742 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - initializing framework
+2019-06-13 08:49:50,953 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - implicit login
+2019-06-13 08:49:57,040 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - user successfully logged in
+2019-06-13 08:49:57,054 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - TimeOut:30
+2019-06-13 08:53:00,481 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - initializing framework
+2019-06-13 08:53:11,292 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - implicit login
+2019-06-13 08:53:17,367 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - user successfully logged in
+2019-06-13 08:53:17,382 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - TimeOut:30
+2019-06-13 08:54:45,544 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - initializing framework
+2019-06-13 08:54:53,799 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - implicit login
+2019-06-13 08:54:59,676 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - user successfully logged in
+2019-06-13 08:54:59,690 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - TimeOut:30
+2019-06-13 08:56:48,077 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - initializing framework
+2019-06-13 08:57:00,198 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - implicit login
+2019-06-13 08:57:06,273 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - user successfully logged in
+2019-06-13 08:57:06,274 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - TimeOut:30
+2019-06-14 00:50:57,289 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - initializing framework
+2019-06-14 00:51:19,400 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - implicit login
+2019-06-14 00:51:25,378 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - user successfully logged in
+2019-06-14 00:51:25,388 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - TimeOut:30
+2019-06-14 00:55:56,555 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - initializing framework
+2019-06-14 00:56:04,735 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - implicit login
+2019-06-14 00:56:10,644 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - user successfully logged in
+2019-06-14 00:56:10,659 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - TimeOut:30
+2019-06-14 00:56:57,696 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - Count displaying: 3
+2019-06-14 00:57:01,403 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - Number of records displaying are: 3
+2019-06-14 00:59:29,648 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - Count displaying: 1
+2019-06-14 00:59:30,441 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - Number of records displaying are: 1
+2019-06-14 01:42:31,345 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - initializing framework
+2019-06-14 01:42:47,831 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - implicit login
+2019-06-14 01:42:54,019 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - user successfully logged in
+2019-06-14 01:42:54,030 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - TimeOut:30
+2019-06-14 01:43:04,926 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - Count displaying: 3
+2019-06-14 01:43:04,943 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - Number of records displaying are: 3
+2019-06-14 01:43:05,006 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - LCO username entered is: LCO200005182.01
+2019-06-14 01:43:42,126 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - initializing framework
+2019-06-14 01:43:58,223 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - implicit login
+2019-06-14 01:44:04,341 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - user successfully logged in
+2019-06-14 01:44:04,342 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - TimeOut:30
+2019-06-14 01:44:42,871 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - Count displaying: 3
+2019-06-14 01:44:44,290 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - Number of records displaying are: 3
+2019-06-14 01:44:52,826 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - LCO username entered is: LCO200005182.01
+2019-06-14 01:45:46,267 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - LCO FirstName entered is: ROYAL COMMUNICATION - DAS4
+2019-06-14 01:46:25,822 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - LCO BigCity entered is: AMRITSAR
+2019-06-14 01:47:36,957 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - initializing framework
+2019-06-14 01:47:48,101 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - implicit login
+2019-06-14 01:47:53,885 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - user successfully logged in
+2019-06-14 01:47:53,891 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - TimeOut:30
+2019-06-14 01:48:03,319 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - Count displaying: 3
+2019-06-14 01:48:03,335 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - Number of records displaying are: 3
+2019-06-14 01:48:03,398 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - LCO username entered is: LCO200005182.01
+2019-06-14 01:49:24,648 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - initializing framework
+2019-06-14 01:49:36,169 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - implicit login
+2019-06-14 01:49:42,184 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - user successfully logged in
+2019-06-14 01:49:42,185 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - TimeOut:30
+2019-06-14 01:50:48,088 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - Count displaying: 3
+2019-06-14 01:50:48,914 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - Number of records displaying are: 3
+2019-06-14 01:50:53,789 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - LCO username entered is: LCO200005182.01
+2019-06-14 01:51:34,535 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - LCO FirstName entered is: ROYAL COMMUNICATION - DAS4
+2019-06-14 01:52:32,666 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - LCO BigCity entered is: AMRITSAR
+2019-06-14 01:52:52,995 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - LCO status selected is: REGISTERED
+2019-06-14 01:53:31,508 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - Count displaying: 1
+2019-06-14 01:53:32,712 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - Number of records displaying are: 1
+2019-06-14 01:53:38,336 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - 1020739350 LCO200005182.01 ROYAL COMMUNICATION - DAS4 rukmini.patel@mobiotics.com 7760189997 REGISTERED 1 AMRITSAR 26/04/2019 11:16:48
+2019-06-14 01:54:40,678 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - initializing framework
+2019-06-14 01:54:49,450 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - implicit login
+2019-06-14 01:54:55,709 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - user successfully logged in
+2019-06-14 01:54:55,721 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - TimeOut:30
+2019-06-14 01:55:05,341 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - Count displaying: 3
+2019-06-14 01:55:05,362 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - Number of records displaying are: 3
+2019-06-14 01:55:05,423 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - LCO username entered is: LCO200005182.01
+2019-06-14 01:58:32,826 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - initializing framework
+2019-06-14 01:58:40,988 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - implicit login
+2019-06-14 01:58:46,722 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - user successfully logged in
+2019-06-14 01:58:46,723 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - TimeOut:30
+2019-06-14 01:58:56,338 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - Count displaying: 3
+2019-06-14 01:58:56,345 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - Number of records displaying are: 3
+2019-06-14 01:58:56,439 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - LCO username entered is: LCO200005182.01
+2019-06-14 02:00:06,775 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - initializing framework
+2019-06-14 02:00:16,042 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - implicit login
+2019-06-14 02:00:21,942 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - user successfully logged in
+2019-06-14 02:00:21,943 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - TimeOut:30
+2019-06-14 02:00:33,278 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - Count displaying: 3
+2019-06-14 02:00:33,312 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - Number of records displaying are: 3
+2019-06-14 02:00:33,403 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - LCO username entered is: LCO200005182.01
+2019-06-14 02:01:49,387 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - initializing framework
+2019-06-14 02:01:58,798 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - implicit login
+2019-06-14 02:02:04,727 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - user successfully logged in
+2019-06-14 02:02:04,742 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - TimeOut:30
+2019-06-14 02:02:16,168 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - Count displaying: 3
+2019-06-14 02:02:16,239 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - Number of records displaying are: 3
+2019-06-14 02:02:16,426 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - LCO username entered is: LCO200005182.01
+2019-06-14 02:03:45,862 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - initializing framework
+2019-06-14 02:03:55,020 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - implicit login
+2019-06-14 02:04:01,053 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - user successfully logged in
+2019-06-14 02:04:01,066 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - TimeOut:30
+2019-06-14 02:04:13,053 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - Count displaying: 3
+2019-06-14 02:04:13,084 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - Number of records displaying are: 3
+2019-06-14 02:04:13,171 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - LCO username entered is: LCO200005182.01
+2019-06-14 02:04:44,678 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - LCO FirstName entered is: ROYAL COMMUNICATION - DAS4
+2019-06-14 02:04:50,766 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - LCO BigCity entered is: AMRITSAR
+2019-06-14 02:04:56,537 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - LCO status selected is: REGISTERED
+2019-06-14 02:05:02,136 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - Count displaying: 1
+2019-06-14 02:05:02,151 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - Number of records displaying are: 1
+2019-06-14 02:05:02,250 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - 1020739350 LCO200005182.01 ROYAL COMMUNICATION - DAS4 rukmini.patel@mobiotics.com 7760189997 REGISTERED 1 AMRITSAR 26/04/2019 11:16:48
+2019-06-14 02:06:57,521 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - initializing framework
+2019-06-14 02:07:06,065 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - implicit login
+2019-06-14 02:07:11,885 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - user successfully logged in
+2019-06-14 02:07:11,890 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - TimeOut:30
+2019-06-14 02:07:21,782 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - Count displaying: 3
+2019-06-14 02:07:21,822 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - Number of records displaying are: 3
+2019-06-14 02:07:21,900 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - LCO username entered is: LCO200005182.01
+2019-06-14 02:07:28,192 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - LCO FirstName entered is: ROYAL COMMUNICATION - DAS4
+2019-06-14 02:07:31,244 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - LCO BigCity entered is: AMRITSAR
+2019-06-14 02:07:34,099 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - LCO status selected is: REGISTERED
+2019-06-14 02:07:36,670 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - Count displaying: 1
+2019-06-14 02:07:36,703 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - Number of records displaying are: 1
+2019-06-14 02:07:36,873 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - 1020739350 LCO200005182.01 ROYAL COMMUNICATION - DAS4 rukmini.patel@mobiotics.com 7760189997 REGISTERED 1 AMRITSAR 26/04/2019 11:16:48
+2019-06-14 02:29:00,696 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - initializing framework
+2019-06-14 02:29:12,936 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - implicit login
+2019-06-14 02:29:19,223 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - user successfully logged in
+2019-06-14 02:29:19,223 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - TimeOut:30
+2019-06-14 02:29:30,677 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - Count displaying: 3
+2019-06-14 02:29:30,686 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - Number of records displaying are: 3
+2019-06-14 02:29:30,748 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - LCO username entered is: LCO200005182.01
+2019-06-14 02:29:36,940 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - LCO FirstName entered is: ROYAL COMMUNICATION - DAS4
+2019-06-14 02:29:39,714 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - LCO BigCity entered is: AMRITSAR
+2019-06-14 02:29:42,463 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - LCO status selected is: REGISTERED
+2019-06-14 02:29:45,074 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - Count displaying: 1
+2019-06-14 02:29:45,080 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - Number of records displaying are: 1
+2019-06-14 02:29:45,255 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - 1020739350 LCO200005182.01 ROYAL COMMUNICATION - DAS4 rukmini.patel@mobiotics.com 7760189997 REGISTERED 1 AMRITSAR 26/04/2019 11:16:48
+2019-06-14 02:30:57,965 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - initializing framework
+2019-06-14 02:31:11,690 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - implicit login
+2019-06-14 02:31:18,198 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - user successfully logged in
+2019-06-14 02:31:18,199 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - TimeOut:30
+2019-06-14 02:31:29,005 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - Count displaying: 3
+2019-06-14 02:31:29,054 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - Number of records displaying are: 3
+2019-06-14 02:31:29,195 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - LCO username entered is: LCO200005182.01
+2019-06-14 02:31:35,385 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - LCO FirstName entered is: ROYAL COMMUNICATION - DAS4
+2019-06-14 02:31:38,298 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - LCO BigCity entered is: AMRITSAR
+2019-06-14 02:31:41,174 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - LCO status selected is: REGISTERED
+2019-06-14 02:31:43,783 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - Count displaying: 1
+2019-06-14 02:31:43,799 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - Number of records displaying are: 1
+2019-06-14 02:31:43,892 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - 1020739350 LCO200005182.01 ROYAL COMMUNICATION - DAS4 rukmini.patel@mobiotics.com 7760189997 REGISTERED 1 AMRITSAR 26/04/2019 11:16:48
+2019-06-14 04:19:24,813 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - initializing framework
+2019-06-14 04:19:44,880 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - implicit login
+2019-06-14 04:19:52,503 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - user successfully logged in
+2019-06-14 04:19:52,504 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - TimeOut:30
+2019-06-14 04:20:03,710 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - Count displaying: 3
+2019-06-14 04:20:03,731 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - Number of records displaying are: 3
+2019-06-14 04:20:03,815 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - LCO username entered is: LCO200005182.01
+2019-06-14 04:20:10,103 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - LCO FirstName entered is: ROYAL COMMUNICATION - DAS4
+2019-06-14 04:20:12,979 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - LCO BigCity entered is: AMRITSAR
+2019-06-14 04:20:16,004 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - LCO status selected is: REGISTERED
+2019-06-14 04:20:18,590 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - Count displaying: 1
+2019-06-14 04:20:18,606 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - Number of records displaying are: 1
+2019-06-14 04:20:18,682 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - 1020739350 LCO200005182.01 ROYAL COMMUNICATION - DAS4 rukmini.patel@mobiotics.com 7760189997 REGISTERED 1 AMRITSAR 26/04/2019 11:16:48
+2019-06-14 04:42:46,404 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - initializing framework
+2019-06-14 04:42:59,112 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - implicit login
+2019-06-14 04:43:05,112 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - user successfully logged in
+2019-06-14 04:43:05,112 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - TimeOut:30
+2019-06-14 04:43:16,390 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - Count displaying: 3
+2019-06-14 04:43:16,407 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - Number of records displaying are: 3
+2019-06-14 04:43:16,524 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - LCO username entered is: null
+2019-06-14 04:45:05,914 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - initializing framework
+                                                                                                   2019-06-14 04:58:06,673 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - initializing framework
+2019-06-14 04:58:19,035 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - implicit login
+2019-06-14 04:58:25,182 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - user successfully logged in
+2019-06-14 04:58:25,182 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - TimeOut:30
+2019-06-14 04:58:36,604 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - Count displaying: 3
+2019-06-14 04:58:36,613 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - Number of records displaying are: 3
+2019-06-14 04:58:37,339 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - LCO username entered is: LCO200005182.01
+2019-06-14 04:58:43,444 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - LCO FirstName entered is: ROYAL COMMUNICATION - DAS4
+2019-06-14 04:58:46,236 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - LCO BigCity entered is: AMRITSAR
+2019-06-14 04:58:48,855 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - LCO status selected is: REGISTERED
+2019-06-14 04:58:51,493 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - Count displaying: 1
+2019-06-14 04:58:51,522 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - Number of records displaying are: 1
+2019-06-14 04:58:51,647 - com.mobiotics.HITSAdmin.operatore_LCO.OperatorsLCOPage -INFO - 1020739350 LCO200005182.01 ROYAL COMMUNICATION - DAS4 rukmini.patel@mobiotics.com 7760189997 REGISTERED 1 AMRITSAR 26/04/2019 11:16:48
+2019-06-14 05:19:13,549 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO -INFO - initializing framework
+2019-06-14 05:20:10,532 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsMSO -INFO - initializing framework
+2019-06-14 05:20:22,084 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsMSO -INFO - implicit login
+2019-06-14 05:20:28,026 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsMSO -INFO - user successfully logged in
+2019-06-14 05:20:28,040 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsMSO -INFO - TimeOut:30
+2019-06-14 05:20:38,623 - com.mobiotics.HITSAdmin.operators_MSO.OperatorsMSOPage -INFO - Count displaying: 3
+2019-06-14 05:20:38,639 - com.mobiotics.HITSAdmin.operators_MSO.OperatorsMSOPage -INFO - Number of records displaying are: 3
+2019-06-14 05:20:39,007 - com.mobiotics.HITSAdmin.operators_MSO.OperatorsMSOPage -INFO - MSO username entered is: LCO200005182.01
+2019-06-14 05:21:53,785 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsMSO -INFO - initializing framework
+2019-06-14 05:22:00,394 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsMSO -INFO - implicit login
+2019-06-14 05:22:20,443 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsMSO -INFO - initializing framework
+2019-06-14 05:22:27,782 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsMSO -INFO - implicit login
+2019-06-14 05:22:33,832 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsMSO -INFO - user successfully logged in
+2019-06-14 05:22:33,844 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsMSO -INFO - TimeOut:30
+2019-06-14 05:25:38,014 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsMSO -INFO - initializing framework
+2019-06-14 05:25:46,203 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsMSO -INFO - implicit login
+2019-06-14 05:25:52,238 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsMSO -INFO - user successfully logged in
+2019-06-14 05:25:52,250 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsMSO -INFO - TimeOut:30
+2019-06-14 05:29:57,417 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsMSO -INFO - initializing framework
+2019-06-14 05:30:05,642 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsMSO -INFO - implicit login
+2019-06-14 05:30:11,444 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsMSO -INFO - user successfully logged in
+2019-06-14 05:30:11,444 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsMSO -INFO - TimeOut:30
+2019-06-14 05:30:59,043 - com.mobiotics.HITSAdmin.operators_MSO.OperatorsMSOPage -INFO - No Data Found
+2019-06-14 05:31:43,612 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsMSO -INFO - initializing framework
+2019-06-14 05:31:53,504 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsMSO -INFO - implicit login
+2019-06-14 05:31:59,895 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsMSO -INFO - user successfully logged in
+2019-06-14 05:31:59,896 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsMSO -INFO - TimeOut:30
+2019-06-14 05:32:48,688 - com.mobiotics.HITSAdmin.operators_MSO.OperatorsMSOPage -INFO - Count displaying: 3
+2019-06-14 05:32:52,195 - com.mobiotics.HITSAdmin.operators_MSO.OperatorsMSOPage -INFO - Number of records displaying are: 3
+2019-06-14 05:33:14,343 - com.mobiotics.HITSAdmin.operators_MSO.OperatorsMSOPage -INFO - MSO username entered is: WLMSO00000199.98
+2019-06-14 05:34:08,665 - com.mobiotics.HITSAdmin.operators_MSO.OperatorsMSOPage -INFO - MSO FirstName entered is: MEGA VISION COMMUNICATION
+2019-06-14 05:34:29,467 - com.mobiotics.HITSAdmin.operators_MSO.OperatorsMSOPage -INFO - MSO BigCity entered is: NIZAMABAD
+2019-06-14 05:34:54,278 - com.mobiotics.HITSAdmin.operators_MSO.OperatorsMSOPage -INFO - LCO status selected is: REGISTERED
+2019-06-14 05:35:13,997 - com.mobiotics.HITSAdmin.operators_MSO.OperatorsMSOPage -INFO - Count displaying: 1
+2019-06-14 05:35:15,270 - com.mobiotics.HITSAdmin.operators_MSO.OperatorsMSOPage -INFO - Number of records displaying are: 1
+2019-06-14 05:35:18,722 - com.mobiotics.HITSAdmin.operators_MSO.OperatorsMSOPage -INFO - 1000000997 WLMSO00000199.98 MEGA VISION COMMUNICATION megha.kengalkar@mobiotics.com 9619540616 REGISTERED 1 NIZAMABAD 22/07/2016 08:18:40
+2019-06-14 05:49:41,865 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsMSO -INFO - initializing framework
+2019-06-14 05:49:51,618 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsMSO -INFO - implicit login
+2019-06-14 05:49:57,532 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsMSO -INFO - user successfully logged in
+2019-06-14 05:49:57,548 - com.mobiotics.HITSAdmin.tstCases.TC_OperatorsMSO -INFO - TimeOut:30
+2019-06-14 05:50:07,992 - com.mobiotics.HITSAdmin.operators_MSO.OperatorsMSOPage -INFO - Count displaying: 3
+2019-06-14 05:50:08,003 - com.mobiotics.HITSAdmin.operators_MSO.OperatorsMSOPage -INFO - Number of records displaying are: 3
+2019-06-14 05:50:09,939 - com.mobiotics.HITSAdmin.operators_MSO.OperatorsMSOPage -INFO - MSO username entered is: WLMSO00000199.98
+2019-06-14 05:50:16,254 - com.mobiotics.HITSAdmin.operators_MSO.OperatorsMSOPage -INFO - MSO FirstName entered is: MEGA VISION COMMUNICATION
+2019-06-14 05:50:19,144 - com.mobiotics.HITSAdmin.operators_MSO.OperatorsMSOPage -INFO - MSO BigCity entered is: NIZAMABAD
+2019-06-14 05:50:22,002 - com.mobiotics.HITSAdmin.operators_MSO.OperatorsMSOPage -INFO - MSO status selected is: REGISTERED
+2019-06-14 05:50:24,867 - com.mobiotics.HITSAdmin.operators_MSO.OperatorsMSOPage -INFO - Count displaying: 1
+2019-06-14 05:50:24,898 - com.mobiotics.HITSAdmin.operators_MSO.OperatorsMSOPage -INFO - Number of records displaying are: 1
+2019-06-14 05:50:25,071 - com.mobiotics.HITSAdmin.operators_MSO.OperatorsMSOPage -INFO - 1000000997 WLMSO00000199.98 MEGA VISION COMMUNICATION megha.kengalkar@mobiotics.com 9619540616 REGISTERED 1 NIZAMABAD 22/07/2016 08:18:40
