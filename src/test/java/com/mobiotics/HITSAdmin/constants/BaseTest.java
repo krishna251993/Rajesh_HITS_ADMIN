@@ -4,11 +4,10 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
-
-import org.apache.commons.collections.map.HashedMap;
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
+import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -16,8 +15,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 
 import com.mobiotics.HITSAdmin.commonpages.LoginPage;
 
@@ -57,7 +56,7 @@ public class BaseTest implements AutomationConstants {
 		timeout = Long.parseLong(Property.getPropertyValue(CONFIG_PATH + CONFIG_FILE, "IMPLICIT"));
 	}
 
-	@BeforeMethod
+	@BeforeTest
 	public void initApplication() throws Exception {
 		initFrameWork();
 		System.setProperty(CHROME_KEY, DRIVER_PATH + CHROME_FILE);
@@ -109,8 +108,11 @@ public class BaseTest implements AutomationConstants {
 		}
 	}
 
-	//@AfterMethod
-	public void shutDown() {
+	@AfterTest
+	public void shutDown() throws InterruptedException {
+		driver.findElement(By.xpath("//a[contains(text(), 'Logout')]")).click();
+		log.info("Logout from the HITS Admin Portal.");
+		Thread.sleep(5000);
 		driver.quit();
 	}
 

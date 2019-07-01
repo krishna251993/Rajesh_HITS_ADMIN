@@ -137,6 +137,9 @@ public class NavigationMenu extends BasePage{
 	
 	@FindBy(xpath = "//a[text()='Pay Bills ']")
 	public WebElement reportFinancePayBills;
+	
+	@FindBy(xpath = "//a[text()='Refund Report']")
+	public WebElement reportFinanceRefundReport;
 	//---------------------------------------------------------
 	
 	//----------------This is for Messages---------------------
@@ -162,7 +165,7 @@ public class NavigationMenu extends BasePage{
 	
 	//--------------This is for Banks-------------------------
 	@FindBy(xpath = "//a[text()='List Banks']")
-	public WebElement subuserListBanks;
+	public WebElement bnksListBanks;
 	//--------------------------------------------------------
 	
 }

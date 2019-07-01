@@ -177,11 +177,13 @@ public class OperatorsMSOPage extends BasePage{
 	
 	public void testOperators_MSO() throws InterruptedException, IOException
 	{
+		Assert.assertEquals(driver.getTitle(), "MSO List", "This is not MSO List Page.");
 		selectDates("01-01-2016");
 		Thread.sleep(5000);
 		
 		if(verifyDataIsPresent())
 		{
+			logger.info("No MSO is created within the selected timeline.");
 			return;
 		}
 		verifyCount();
@@ -231,7 +233,7 @@ public class OperatorsMSOPage extends BasePage{
 		try
 		{
 			Runtime run = Runtime.getRuntime();
-			run.exec(System.getProperty("user.dir")+"\\Drivers\\saveReport.exe");
+			run.exec(System.getProperty("user.dir")+"\\exeFiles\\saveReport.exe");
 		}
 		catch (Exception e) {
 			

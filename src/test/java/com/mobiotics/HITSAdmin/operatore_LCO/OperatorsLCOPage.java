@@ -181,11 +181,13 @@ public class OperatorsLCOPage extends BasePage{
 	
 	public void testOperators_LCO() throws InterruptedException, IOException
 	{
+		Assert.assertEquals(driver.getTitle(), "LCO List", "This is not LCO List Page.");
 		selectDates("01-01-2017");
 		Thread.sleep(5000);
 		
 		if(verifyDataIsPresent())
 		{
+			logger.info("No LCO is created within the selected timeline.");
 			return;
 		}
 		verifyCount();
@@ -235,7 +237,7 @@ public class OperatorsLCOPage extends BasePage{
 		try
 		{
 			Runtime run = Runtime.getRuntime();
-			run.exec(System.getProperty("user.dir")+"\\Drivers\\saveReport.exe");
+			run.exec(System.getProperty("user.dir")+"\\exeFiles\\saveReport.exe");
 		}
 		catch (Exception e) {
 			

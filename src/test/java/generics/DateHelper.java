@@ -40,7 +40,7 @@ public class DateHelper extends BasePage{
 		}
 
 
-	 public void selectMonth(WebElement previousMonth, WebElement nextMonth, String currentMonth, int mm)
+	 public void selectMonth(WebElement previousMonth, WebElement nextMonth, String currentMonth, int mm) throws InterruptedException
 		{
 			ArrayList<String> monthList = new ArrayList<String>();
 			monthList.add("");
@@ -64,11 +64,13 @@ public class DateHelper extends BasePage{
 			{
 				if(difference<0)
 				{
+					Thread.sleep(500);
 					previousMonth.click();
 					difference++;
 				}
 				else if(difference>0)
 				{
+					Thread.sleep(500);
 					nextMonth.click();
 					difference--;
 				}

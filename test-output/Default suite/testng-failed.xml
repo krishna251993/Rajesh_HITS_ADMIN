@@ -3,12 +3,12 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.mobiotics.HITSAdmin.tstCases.TC_OperatorsMSO">
+      <class name="com.mobiotics.HITSAdmin.tstCases.TC_MessageListMessage_30">
         <methods>
           <include name="initApplication"/>
-          <include name="operatorsTestMethod"/>
+          <include name="testListMessageMethod"/>
         </methods>
-      </class> <!-- com.mobiotics.HITSAdmin.tstCases.TC_OperatorsMSO -->
+      </class> <!-- com.mobiotics.HITSAdmin.tstCases.TC_MessageListMessage_30 -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

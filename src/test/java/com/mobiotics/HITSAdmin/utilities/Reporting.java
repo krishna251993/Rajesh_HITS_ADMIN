@@ -38,12 +38,12 @@ public class Reporting extends TestListenerAdapter
 		extent=new ExtentReports();
 		
 		extent.attachReporter(htmlReporter);
-		extent.setSystemInfo("Host name","Rajesh Thakur");
+		extent.setSystemInfo("Host name","Sakshi Jain");
 		extent.setSystemInfo("Environemnt","QA");
-		extent.setSystemInfo("user name","rajesh.thakur@mobiotics.com");
+		extent.setSystemInfo("user name","sakshi.jain@mobiotics.com");
 		
-		htmlReporter.config().setDocumentTitle("IMCL_LCO_Auto generated Report"); // Tile of report
-		htmlReporter.config().setReportName("Functional Test Automation Report of HITS_LCO"); // name of the report
+		htmlReporter.config().setDocumentTitle("HITS_Admin_Auto generated Report"); // Tile of report
+		htmlReporter.config().setReportName("Functional Test Automation Report of HITS_Admin"); // name of the report
 		htmlReporter.config().setTestViewChartLocation(ChartLocation.TOP); //location of the chart
 		htmlReporter.config().setTheme(Theme.DARK);
 	}
