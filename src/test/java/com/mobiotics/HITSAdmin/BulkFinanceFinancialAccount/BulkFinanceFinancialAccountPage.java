@@ -85,6 +85,7 @@ public class BulkFinanceFinancialAccountPage extends BasePage{
 	{
 		verifyPage();
 		uploadBulkFile();
+		Thread.sleep(5000);
 	}
 	
 	

@@ -88,6 +88,7 @@ public class BulkCustomerChangeTypeClassPage extends BasePage{
 	{
 		verifyPage();
 		uploadBulkFile();
+		Thread.sleep(5000);
 	}
 	
 

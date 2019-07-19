@@ -51,7 +51,7 @@ public class MessageAddScrollPage extends BasePage{
 		{
 			logger.info(successMsg.getText());
 		}
-		
+		Thread.sleep(5000);
 		
 	}
 	

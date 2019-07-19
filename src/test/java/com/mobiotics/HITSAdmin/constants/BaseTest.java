@@ -61,7 +61,7 @@ public class BaseTest implements AutomationConstants {
 		initFrameWork();
 		System.setProperty(CHROME_KEY, DRIVER_PATH + CHROME_FILE);
 
-		String downloadFilePath = "C:\\HITS_Admin_Automation_Download_Reports";
+		String downloadFilePath = System.getProperty("user.dir") + "\\downloadedFiles";
 
 		HashMap<String, Object> chromePrefs = new HashMap<String, Object>();
 		chromePrefs.put("profile.default_content_setting.popups", 2);
@@ -108,8 +108,9 @@ public class BaseTest implements AutomationConstants {
 		}
 	}
 
-	@AfterTest
+	//@AfterTest
 	public void shutDown() throws InterruptedException {
+		Thread.sleep(4000);
 		driver.findElement(By.xpath("//a[contains(text(), 'Logout')]")).click();
 		log.info("Logout from the HITS Admin Portal.");
 		Thread.sleep(5000);

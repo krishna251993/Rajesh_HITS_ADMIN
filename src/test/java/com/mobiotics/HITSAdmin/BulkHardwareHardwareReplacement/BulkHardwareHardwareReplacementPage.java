@@ -89,6 +89,7 @@ public BulkHardwareHardwareReplacementPage()
 	{
 		verifyPage();
 		uploadBulkFile();
+		Thread.sleep(5000);
 	}
 	
 

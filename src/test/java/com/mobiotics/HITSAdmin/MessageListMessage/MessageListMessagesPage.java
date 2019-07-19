@@ -2,6 +2,8 @@ package com.mobiotics.HITSAdmin.MessageListMessage;
 
 
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebElement;
@@ -76,6 +78,12 @@ public class MessageListMessagesPage extends BasePage {
 	
 	@FindBy(id = "close")
 	private WebElement closeBtnDelPopUp;
+	
+	@FindBy(xpath = "//p[@class='success text-success']")
+	private WebElement successMsgOfDeleteMsg;
+	
+	@FindBy(xpath = "//p[@class= 'error text-danger']")
+	private WebElement errMsgOfDeleteMsg;
 
 	@FindBy(xpath = "//table[@class='table table-striped']/tbody/tr")
 	private List<WebElement> alertMesagesRows;
@@ -88,10 +96,11 @@ public class MessageListMessagesPage extends BasePage {
 	public int createAlertMsg() throws InterruptedException {
 		int count = 0;
 		for (int i = 1; i < 4; i++) {
+			Thread.sleep(3000);
 			String alertType = DemoExcelLibrary3.getexcelData("hits admin data", i, 3, path);
 			if (alertType.equals("CUSTOMER")) {
 				for (int j = 1; j < 4; j++) {
-					Thread.sleep(2000);
+					Thread.sleep(4000);
 					waitTillElementIsVisible(createAlertMsgBtn);
 					createAlertMsgBtn.click();
 					selectElement(priorityList, "1");
@@ -113,7 +122,7 @@ public class MessageListMessagesPage extends BasePage {
 						selectElement(entityTypeList, entityType);
 
 					descriptionTxtArea.sendKeys("This is Alert message for Automation script " + alertType +" "+entityType);
-					Thread.sleep(4000);
+					Thread.sleep(5000);
 					createBtn.click();
 					Thread.sleep(6000);
 					
@@ -121,9 +130,9 @@ public class MessageListMessagesPage extends BasePage {
 					{
 						logger.info(errMsg.getText());
 						descriptionTxtArea.clear();
-						Thread.sleep(1000);
+						Thread.sleep(3000);
 						closePopUpBtn.click();
-						Thread.sleep(2000);
+						Thread.sleep(3000);
 					}
 					else {
 						count++;
@@ -133,8 +142,14 @@ public class MessageListMessagesPage extends BasePage {
 			}
 
 			else {
+				Thread.sleep(4000);
+				waitTillElementIsClickable(createAlertMsgBtn);
 				createAlertMsgBtn.click();
+				Thread.sleep(4000);
+				waitTillElementIsClickable(priorityList);
 				selectElement(priorityList, "1");
+				Thread.sleep(3000);
+				waitTillElementIsClickable(alertTypeList);
 				selectElement(alertTypeList, alertType);
 				descriptionTxtArea.sendKeys("This is Alert message for Automation script "  + alertType);
 				Thread.sleep(7000);
@@ -145,9 +160,9 @@ public class MessageListMessagesPage extends BasePage {
 				{
 					logger.info(errMsg.getText());
 					descriptionTxtArea.clear();
-					Thread.sleep(1000);
-					closePopUpBtn.click();
 					Thread.sleep(2000);
+					closePopUpBtn.click();
+					Thread.sleep(3000);
 				}
 				else {
 					count++;
@@ -163,17 +178,43 @@ public class MessageListMessagesPage extends BasePage {
 		int i=0, count = 0;
 		while(i<eleList.size())
 		{
+			Thread.sleep(3000);
+//			Pattern pattern1 =Pattern.compile("This is Alert message for Automation script");
+//			Matcher matcher = pattern1.matcher(eleList.get(i).getText());
+//			if(matcher.lookingAt())
+//			{
+//				
+//			}
+			
 			String alertMsgTxt = eleList.get(i).getText();
 			if(alertMsgTxt.contains("This is Alert message for Automation script"))
 			{
+				Thread.sleep(5000);
+				waitTillElementIsClickable(delBtnList.get(i));
 				delBtnList.get(i).click();
-				Thread.sleep(4000);
-				waitTillElementIsVisible(deleteBtnPopUp);
+				Thread.sleep(7000);
+				waitTillElementIsClickable(deleteBtnPopUp);
 				deleteBtnPopUp.click();
-				waitTillElementIsClickable(closeBtnDelPopUp);
-				closeBtnDelPopUp.click();
-				Thread.sleep(4000);
-				count++;
+				Thread.sleep(6000);
+				
+				if(!(successMsgOfDeleteMsg.getText().equals("")))
+				{
+					waitTillElementIsClickable(closeBtnDelPopUp);
+					closeBtnDelPopUp.click();
+					Thread.sleep(4000);
+					count++;
+				}
+					
+				else
+				{
+					logger.info(alertMsgTxt+" is not deleted ");
+					logger.info(errMsgOfDeleteMsg.getText());
+					waitTillElementIsClickable(closeBtnDelPopUp);
+					closeBtnDelPopUp.click();
+					Thread.sleep(4000);
+				}
+				
+				
 			}
 			else
 			{
@@ -197,9 +238,11 @@ public class MessageListMessagesPage extends BasePage {
 		logger.info("Number of new alert messages created are: "+noOfmessagesCreated);
 		int noOfMessagesDeleted = deleteMessages(alertMsgTxtList, deleteBtnList);
 		logger.info("Number of messages deleted are: "+noOfMessagesDeleted);
-		
+		Thread.sleep(5000);
 		
 	}
+	
+	
 	
 
 }

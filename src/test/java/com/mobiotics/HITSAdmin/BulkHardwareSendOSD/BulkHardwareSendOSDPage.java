@@ -88,6 +88,7 @@ public class BulkHardwareSendOSDPage extends BasePage{
 	{
 		verifyPage();
 		uploadBulkFile();
+		Thread.sleep(5000);
 	}
 	
 

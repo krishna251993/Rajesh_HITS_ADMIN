@@ -7,8 +7,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
-
-import com.mobiotics.HITSAdmin.ReportCoreJobReport.ReportCoreJobReportPage;
 import com.mobiotics.HITSAdmin.utilities.DemoExcelLibrary3;
 
 import generics.DateHelper;
@@ -22,10 +20,10 @@ public class ReportFinanceListPaymentsPage extends ReportUtilityClass {
 
 	static final Logger logger = Logger.getLogger(ReportFinanceListPaymentsPage.class);
 
-	private static String fromDateXp1 = "/html/body/div[2]/div[1]/div[2]/div[1]/div/div[1]/div[2]/table/tbody/tr[";
+	private static String fromDateXp1 = "//div[@data-name='start']//table/tbody/tr[";
 	private static String fromDateXp2 = "]/td[";
 
-	private static String toDateXp1 = "/html/body/div[2]/div[1]/div[2]/div[1]/div/div[2]/div[2]/table/tbody/tr[";
+	private static String toDateXp1 = "//div[@data-name='end']//table/tbody/tr[";
 	private static String toDateXp2 = "]/td[";
 
 	private String fromDateArchiveXp1 = "//*[@id=\"startt\"]/div[2]/table/tbody/tr[";
@@ -41,46 +39,46 @@ public class ReportFinanceListPaymentsPage extends ReportUtilityClass {
 	@FindBy(xpath = "//h1[contains(text(), 'Payment Report')]")
 	private WebElement pageTitleTxt;
 
-	@FindBy(xpath = "(//i[@class='glyphicon glyphicon-calendar'])[1]")
+	@FindBy(xpath = "//div[@data-name='start']//i[@class='glyphicon glyphicon-calendar']")
 	private WebElement fromDateCal;
 
-	@FindBy(xpath = "(//i[@class='glyphicon glyphicon-chevron-left'])[2]")
+	@FindBy(xpath = "//div[@class='form-inline']//div[@data-name='start']//th[@class='year']//a[@class='previous']/i")
 	private WebElement previousShftYearFromDate;
 
-	@FindBy(xpath = "(//i[@class='glyphicon glyphicon-chevron-right'])[2]")
+	@FindBy(xpath = "//div[@class='form-inline']//div[@data-name='start']//th[@class='year']//a[@class='next']/i")
 	private WebElement nextShftYearFromDate;
 
-	@FindBy(xpath = "(//a[@class='previous']/following-sibling::span)[2]")
+	@FindBy(xpath = "//div[@data-name='start']//th[@class='year']/span")
 	private WebElement fromDateYear;
 
-	@FindBy(xpath = "(//i[@class='glyphicon glyphicon-chevron-left'])[1]")
+	@FindBy(xpath = "//div[@class='form-inline']//div[@data-name='start']//th[@class='month']//a[@class='previous']/i")
 	private WebElement previousShftMonthFromDate;
 
-	@FindBy(xpath = "(//i[@class='glyphicon glyphicon-chevron-right'])[1]")
+	@FindBy(xpath = "//div[@class='form-inline']//div[@data-name='start']//th[@class='month']//a[@class='next']/i")
 	private WebElement nextShftMonthFromDate;
 
-	@FindBy(xpath = "(//a[@class='previous']/following-sibling::span)[1]")
+	@FindBy(xpath = "//div[@data-name='start']//th[@class='month']/span")
 	private WebElement fromDateMonth;
 
-	@FindBy(xpath = "(//i[@class='glyphicon glyphicon-calendar'])[2]")
+	@FindBy(xpath = "//div[@data-name='end']//i[@class='glyphicon glyphicon-calendar']")
 	private WebElement toDateCal;
 
-	@FindBy(xpath = "(//i[@class='glyphicon glyphicon-chevron-left'])[4]")
+	@FindBy(xpath = "//div[@class='form-inline']//div[@data-name='end']//th[@class='year']//a[@class='previous']/i")
 	private WebElement previousShftYearToDate;
 
-	@FindBy(xpath = "(//i[@class='glyphicon glyphicon-chevron-right'])[4]")
+	@FindBy(xpath = "//div[@class='form-inline']//div[@data-name='end']//th[@class='year']//a[@class='next']/i")
 	private WebElement nextShftYearToDate;
 
-	@FindBy(xpath = "(//a[@class='previous']/following-sibling::span)[4]")
+	@FindBy(xpath = "//div[@data-name='end']//th[@class='year']/span")
 	private WebElement toDateYear;
 
-	@FindBy(xpath = "(//i[@class='glyphicon glyphicon-chevron-left'])[3]")
+	@FindBy(xpath = "//div[@class='form-inline']//div[@data-name='end']//th[@class='month']//a[@class='previous']/i")
 	private WebElement previousShftMonthToDate;
 
-	@FindBy(xpath = "(//i[@class='glyphicon glyphicon-chevron-right'])[3]")
+	@FindBy(xpath = "//div[@class='form-inline']//div[@data-name='end']//th[@class='month']//a[@class='next']/i")
 	private WebElement nextShftMonthToDate;
 
-	@FindBy(xpath = "(//a[@class='previous']/following-sibling::span)[3]")
+	@FindBy(xpath = "//div[@data-name='end']//th[@class='month']/span")
 	private WebElement toDateMonth;
 
 	@FindBy(id = "refresh")
@@ -125,23 +123,50 @@ public class ReportFinanceListPaymentsPage extends ReportUtilityClass {
 	@FindBy(xpath = "//table[@class='table table-striped']/tbody/tr[1]/td[1]")
 	private WebElement entityIdDisplaying;
 
+	@FindBy(xpath = "//table[@class='table table-striped']/tbody/tr/td[1]")
+	private List<WebElement> entityIdDisplayingList;
+
 	@FindBy(xpath = "//table[@class='table table-striped']/tbody/tr[1]/td[4]")
 	private WebElement transactionIdDisplaying;
+
+	@FindBy(xpath = "//table[@class='table table-striped']/tbody/tr/td[4]")
+	private List<WebElement> transactionIdDisplayingList;
 
 	@FindBy(xpath = "//table[@class='table table-striped']/tbody/tr[1]/td[last()-4]")
 	private WebElement chequeNoDisplaying;
 
+	@FindBy(xpath = "//table[@class='table table-striped']/tbody/tr/td[last()-4]")
+	private List<WebElement> chequeNoDisplayingList;
+
 	@FindBy(xpath = "//table[@class='table table-striped']/tbody/tr[1]/td[last()-2]")
 	private WebElement paymentStatusDisplaying;
+
+	@FindBy(xpath = "//table[@class='table table-striped']/tbody/tr/td[last()-2]")
+	private List<WebElement> paymentStatusDisplayingList;
+	
+	@FindBy(xpath = "//table[@class='table table-striped']/tbody/tr[1]/td[last()-1]")
+	private WebElement paymentTypeDisplaying;
+	
+	@FindBy(xpath = "//table[@class='table table-striped']/tbody/tr/td[last()-1]")
+	private List<WebElement> paymentTypeDisplayingList;
 
 	@FindBy(xpath = "//table[@class='table table-striped']/tbody/tr[1]/td[5]")
 	private WebElement initiatorDisplaying;
 
+	@FindBy(xpath = "//table[@class='table table-striped']/tbody/tr/td[5]")
+	private List<WebElement> initiatorDisplayingList;
+
 	@FindBy(xpath = "//table[@class='table table-striped']/tbody/tr[1]/td[6]")
 	private WebElement paymentModeDisplaying;
 
+	@FindBy(xpath = "//table[@class='table table-striped']/tbody/tr/td[6]")
+	private List<WebElement> paymentModeDisplayingList;
+
 	@FindBy(xpath = "//table[@class='table table-striped']/tbody/tr[1]/td[last()-1]")
 	private WebElement typeDisplaying;
+
+	@FindBy(xpath = "//table[@class='table table-striped']/tbody/tr/td[last()-1]")
+	private List<WebElement> typeDisplayingList;
 
 	@FindBy(xpath = "//button[contains(text(), 'Payment Report Download')]")
 	private WebElement paymentReportDownloadBtn;
@@ -200,6 +225,12 @@ public class ReportFinanceListPaymentsPage extends ReportUtilityClass {
 	@FindBy(xpath = "//div[@class='modal-header']/button")
 	private WebElement closeArchivePopUpBtn;
 
+	@FindBy(xpath = "//button[text()='Next']")
+	private WebElement nextLink;
+
+	@FindBy(xpath = "//button[text()='Prev']")
+	private WebElement previousLink;
+
 	public void verifyPage() {
 		Assert.assertEquals(driver.getTitle(), "Payment Report", "Page Title is not correct.");
 		Assert.assertEquals(pageTitleTxt.isDisplayed(), true, "Not displaying Correct Page Heading");
@@ -209,9 +240,9 @@ public class ReportFinanceListPaymentsPage extends ReportUtilityClass {
 	public void selectDates(String fromDate, String toDate) throws InterruptedException {
 		waitTillElementIsClickable(fromDateCal);
 		fromDateCal.click();
-		waitTillElementIsClickable(previousShftYearFromDate);
 		String fromDateArr[] = fromDate.split("-");
 		String toDateArr[] = toDate.split("-");
+		waitTillElementIsClickable(previousShftYearFromDate);
 		dh.selectYear(previousShftYearFromDate, nextShftYearFromDate, Integer.parseInt(fromDateYear.getText()),
 				Integer.parseInt(fromDateArr[2]));
 		Thread.sleep(1000);
@@ -227,7 +258,7 @@ public class ReportFinanceListPaymentsPage extends ReportUtilityClass {
 		waitTillElementIsClickable(nextShftYearToDate);
 		dh.selectYear(previousShftYearToDate, nextShftYearToDate, Integer.parseInt(toDateYear.getText()),
 				Integer.parseInt(toDateArr[2]));
-		Thread.sleep(1000);
+		Thread.sleep(3000);
 		waitTillElementIsClickable(nextShftMonthToDate);
 		dh.selectMonth(previousShftMonthToDate, nextShftMonthToDate, toDateMonth.getText(),
 				Integer.parseInt(toDateArr[1]));
@@ -275,28 +306,68 @@ public class ReportFinanceListPaymentsPage extends ReportUtilityClass {
 		searchByTextFilter(entityIdTxtFld, entityIdGoBtn, entityId);
 	}
 
-	public void searchByTransactionId(String transactionId) {
+	public void clearEntityIdFilter() {
+		clearTextFilter(entityIdTxtFld, entityIdGoBtn);
+	}
+
+	public void searchByTransactionId(String transactionId) throws InterruptedException {
 		searchByTextFilter(transactionIdTxtFld, transactionIdGoBtn, transactionId);
+		Thread.sleep(4000);
+		waitTillElementIsVisible(firstRow);
+		if (verifyData()) {
+			logger.info(
+					"No payment details for the Transaction Id " + transactionId + " within the selected Timeline.");
+			return;
+		}
+		waitForVisibiltyOfListOfElements(transactionIdDisplayingList);
+		verifySearch("Transaction Id", transactionIdDisplayingList, transactionId, nextLink, previousLink);
+		clearTransactionIdFilter();
+		waitForVisibiltyOfListOfElements(listOfRecords);
+	}
+
+	public void clearTransactionIdFilter() {
+		clearTextFilter(transactionIdTxtFld, transactionIdGoBtn);
 	}
 
 	public void searchByChequeNo(String chequeNo) {
 		searchByTextFilter(chequeNoTxtFld, chequeNoGoBtn, chequeNo);
+
+	}
+
+	public void clearChequeNoFilter() {
+		clearTextFilter(chequeNoTxtFld, chequeNoGoBtn);
 	}
 
 	public void searchByPaymentStatus(String paymentStatus) {
 		selectElement(paymentStatusList, paymentStatus);
 	}
 
+	public void clearPaymentStatusFilter() {
+		selectElement(paymentStatusList, "ALL");
+	}
+
 	public void searchByInitiator(String initiator) {
 		selectElement(initiatorTypeList, initiator);
+	}
+
+	public void clearInitiatorListFilter() {
+		selectElement(initiatorTypeList, "ALL");
 	}
 
 	public void searchByPaymentMode(String paymentMode) {
 		selectElement(paymentModeList, paymentMode);
 	}
 
+	public void clearPaymentModeFilter() {
+		selectElement(paymentModeList, "ALL");
+	}
+
 	public void searchByType(String type) {
 		selectElement(typeList, type);
+	}
+
+	public void clearType() {
+		selectElement(typeList, "ALL");
 	}
 
 	public boolean verifyData() {
@@ -309,11 +380,25 @@ public class ReportFinanceListPaymentsPage extends ReportUtilityClass {
 		return false;
 	}
 
-	public void verifySearch(WebElement elementDisplaying, String enteredData, String filterName) {
-		logger.info(filterName + " entered is: " + enteredData);
-		logger.info(filterName + " is displaying is " + elementDisplaying.getText());
-		Assert.assertEquals(elementDisplaying.getText(), enteredData,
-				filterName + " entered and " + filterName + " is displaying are not same.");
+
+	public void verifySearch(String filterName, List<WebElement> elementList, String dataExp, WebElement nextLink,
+			WebElement previousLink) throws InterruptedException {
+		Thread.sleep(2000);
+		int noOfElements = countNoOfRecords(elementList, nextLink, previousLink);
+		logger.info("Number of records present for this " + filterName + " are: " + noOfElements);
+		int verifyRowNo = verifyDataDusplaying(elementList, dataExp, nextLink, previousLink);
+
+		if (noOfElements != verifyRowNo) {
+			logger.info("========================================================");
+			logger.info("Functional Test Case for " + filterName + " filter is failed");
+			logger.info(filterName + " is displaying wrong in Row Number " + verifyRowNo);
+			logger.info("========================================================");
+			Assert.assertTrue(false);
+		} else {
+			logger.info("========================================================");
+			logger.info("Functional test case for " + filterName + " filter test case is passed.");
+			logger.info("========================================================");
+		}
 	}
 
 	public void archiveDownloadReport() throws InterruptedException {
@@ -338,88 +423,133 @@ public class ReportFinanceListPaymentsPage extends ReportUtilityClass {
 		String fromDate = DemoExcelLibrary3.getexcelData("hits admin data", 2, 15, path);
 		String toDate = DemoExcelLibrary3.getexcelData("hits admin data", 3, 15, path);
 		selectDates(fromDate, toDate);
-		Thread.sleep(3000);
-		if(verifyData()) 
-		{
+		Thread.sleep(5000);
+		waitTillElementIsVisible(firstRow);
+		if (verifyData()) {
 			logger.info("No payment is done selected timeline.");
 			return;
 		}
 		String entityId = DemoExcelLibrary3.getexcelData("hits admin data", 1, 15, path);
 		searchByEntityId(entityId);
 		Thread.sleep(4000);
+		waitTillElementIsVisible(firstRow);
 		if (verifyData()) {
 			logger.info("No payment details for the entity id " + entityId + " within the selected Timeline.");
 			return;
 		}
-		verifySearch(entityIdDisplaying, entityId, "Entity Id");
+		waitForVisibiltyOfListOfElements(listOfRecords);
 
-		String transactionId = transactionIdDisplaying.getText();
+		//String transactionId = transactionIdDisplaying.getText();
 		String chequeNo = chequeNoDisplaying.getText();
 		String paymentStatus = paymentStatusDisplaying.getText();
 		String initiator = initiatorDisplaying.getText();
 		String paymentMode = paymentModeDisplaying.getText();
-		String type = typeDisplaying.getText();
+		String paymentType = paymentTypeDisplaying.getText();
 
-		searchByTransactionId(transactionId);
-		Thread.sleep(4000);
-		if (verifyData()) {
-			logger.info(
-					"No payment details for the Transaction Id " + transactionId + " within the selected Timeline.");
-			return;
-		}
-		verifySearch(transactionIdDisplaying, transactionId, "Transaction Id");
+		verifySearch("Entity Id", entityIdDisplayingList, entityId, nextLink, previousLink);
+		clearEntityIdFilter();
+		waitForVisibiltyOfListOfElements(listOfRecords);
 
-		if (paymentMode.equalsIgnoreCase("Cheque")) {
+//		searchByTransactionId(transactionId);
+//		Thread.sleep(4000);
+//		waitTillElementIsVisible(firstRow);
+//		if (verifyData()) {
+//			logger.info("No Transaction details for the  Transaction Id " + transactionId
+//					+ " within the selected Timeline.");
+//			return;
+//		}
+//
+//		waitForVisibiltyOfListOfElements(listOfRecords);
+//		verifySearch("Transaction Id", transactionIdDisplayingList, transactionId, nextLink, previousLink);
+		
+		clearTransactionIdFilter();
+		waitForVisibiltyOfListOfElements(listOfRecords);
+
+		if (!(chequeNo.equals("---"))) {
 			searchByChequeNo(chequeNo);
 			Thread.sleep(4000);
+			waitTillElementIsVisible(firstRow);
 			if (verifyData()) {
 				logger.info("No payment details for the Cheque Number " + chequeNo + " within the selected Timeline.");
 				return;
 			}
-			verifySearch(chequeNoDisplaying, chequeNo, "Cheque Id");
+			waitForVisibiltyOfListOfElements(listOfRecords);
+			verifySearch("Cheque Number", chequeNoDisplayingList, chequeNo, nextLink, previousLink);
+			clearChequeNoFilter();
+			waitForVisibiltyOfListOfElements(listOfRecords);
 		}
 
-		searchByPaymentStatus(paymentStatus);
-		Thread.sleep(4000);
-		if (verifyData()) {
-			logger.info(
-					"No payment details for the Payment Status " + paymentStatus + " within the selected Timeline.");
-			return;
+		if (!(paymentStatus.equals("---")))
+		{
+			searchByPaymentStatus(paymentStatus);
+			Thread.sleep(4000);
+			waitTillElementIsVisible(firstRow);
+			if (verifyData()) {
+				logger.info(
+						"No payment details for the Payment Status " + paymentStatus + " within the selected Timeline.");
+				return;
+			}
+			waitForVisibiltyOfListOfElements(listOfRecords);
+			verifySearch("Payment Status", paymentStatusDisplayingList, paymentStatus, nextLink, previousLink);
+			clearPaymentStatusFilter();
+			waitForVisibiltyOfListOfElements(listOfRecords);
 		}
-		verifySearch(paymentStatusDisplaying, paymentStatus, "Payment Status");
+		
 
-		searchByInitiator(initiator);
-		Thread.sleep(4000);
-		if (verifyData()) {
-			logger.info(
-					"No payment details for the selected Initiator " + initiator + " within the selected Timeline.");
-			return;
+		
+		if(!(initiator.equalsIgnoreCase("MSO")))
+		{
+			searchByInitiator(initiator);
+			Thread.sleep(4000);
+			waitTillElementIsVisible(firstRow);
+			if (verifyData()) {
+				logger.info(
+						"No payment details for the selected Initiator " + initiator + " within the selected Timeline.");
+				return;
+			}
+			waitForVisibiltyOfListOfElements(listOfRecords);
+			verifySearch("Initiator", initiatorDisplayingList, initiator, nextLink, previousLink);
+			clearInitiatorListFilter();
+			waitForVisibiltyOfListOfElements(listOfRecords);
 		}
-		verifySearch(initiatorDisplaying, initiator, "Initiator");
+			
 
 		searchByPaymentMode(paymentMode);
 		Thread.sleep(4000);
+		waitTillElementIsVisible(firstRow);
 		if (verifyData()) {
-			logger.info("No payment details for the selected payment mode: " + initiator
+			logger.info("No payment details for the selected payment mode: " + paymentMode
 					+ " within the selected Timeline.");
 			return;
 		}
-		verifySearch(paymentModeDisplaying, paymentMode, "Payment Mode");
-
-		if (paymentMode.equalsIgnoreCase("OP")) {
-			searchByType(type);
+		waitForVisibiltyOfListOfElements(listOfRecords);
+		verifySearch("Payment Mode", paymentModeDisplayingList, paymentMode, nextLink, previousLink);
+		clearPaymentModeFilter();
+		waitForVisibiltyOfListOfElements(listOfRecords);
+		
+		if(!(paymentType.equals("---")))
+		{
+			searchByType(paymentType);
 			Thread.sleep(4000);
+			waitTillElementIsVisible(firstRow);
 			if (verifyData()) {
-				logger.info("No payment details for the selected type: " + type + " within the selected Timeline.");
+				logger.info("No payment details for the selected payment Type: " + paymentType
+						+ " within the selected Timeline.");
 				return;
 			}
-			verifySearch(typeDisplaying, type, "Type");
+			waitForVisibiltyOfListOfElements(listOfRecords);
+			verifySearch("Payment Type", paymentTypeDisplayingList, paymentType, nextLink, previousLink);
+			clearPaymentModeFilter();
+			waitForVisibiltyOfListOfElements(listOfRecords);
 		}
 
 		downloadReport(paymentReportDownloadBtn);
 
 		archiveDownloadReport();
+		Thread.sleep(5000);
 
 	}
+	
+	
 
 }

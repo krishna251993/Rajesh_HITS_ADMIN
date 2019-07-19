@@ -92,7 +92,9 @@ public class MaintenancePage extends BasePage {
 		if (driver.getTitle().equalsIgnoreCase("Dashboard")) {
 			logger.info("Slate Message disabled.");
 		}
-
+		
+		Thread.sleep(5000);
 	}
+	
 
 }

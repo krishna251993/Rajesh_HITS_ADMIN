@@ -90,6 +90,7 @@ public class BulkAdjustmentCreditPage extends BasePage{
 	{
 		verifyPage();
 		uploadBulkFile();
+		Thread.sleep(5000);
 	}
 	
 	

@@ -53,6 +53,24 @@ public class DemoExcelLibrary3 {
 			return retval;
 		}
 		
+		public static int getlastcolumn(String sheetname,String path){
+			int retval=0;
+			try {
+				FileInputStream fis=new FileInputStream(path);
+				retval=WorkbookFactory.create(fis).getSheet(sheetname).getRow(0).getLastCellNum();
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (InvalidFormatException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return retval;
+		}
+		
 		
 		
 		

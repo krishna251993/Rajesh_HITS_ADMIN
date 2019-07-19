@@ -78,6 +78,7 @@ public class BulkHardwareDisconnectPage extends BasePage{
 	{
 		verifyPage();
 		uploadBulkFile();
+		Thread.sleep(5000);
 	}
 	
 	

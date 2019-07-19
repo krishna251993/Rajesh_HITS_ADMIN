@@ -26,33 +26,58 @@ public class OperatorsMSOPage extends BasePage{
 	
 	static final Logger logger=Logger.getLogger(OperatorsMSOPage.class);
 	
-	private static String fromDateXp1 = "/html/body/div[2]/div[1]/div[2]/div[1]/div/div[1]/div[2]/table/tbody/tr[";
+	private static String fromDateXp1 = "//div[@data-name='start']//table/tbody/tr[";
 	private static String fromDateXp2 = "]/td[";
+
+	private static String toDateXp1 = "//div[@data-name='end']//table/tbody/tr[";
+	private static String toDateXp2 = "]/td[";
+
 	private String path = System.getProperty("user.dir")+"\\excelFiles\\tsetData.xls";
 	
 	private DateHelper dh = new DateHelper();
 	
-	@FindBy(xpath = "(//i[@class='glyphicon glyphicon-calendar'])[1]")
+	@FindBy(xpath = "//div[@data-name='start']//i[@class='glyphicon glyphicon-calendar']")
 	private WebElement fromDateCal;
-	
-	@FindBy(xpath = "(//i[@class='glyphicon glyphicon-chevron-left'])[2]")
+
+	@FindBy(xpath = "//div[@class='form-inline']//div[@data-name='start']//th[@class='year']//a[@class='previous']/i")
 	private WebElement previousShftYearFromDate;
-	
-	@FindBy(xpath = "(//i[@class='glyphicon glyphicon-chevron-right'])[2]")
+
+	@FindBy(xpath = "//div[@class='form-inline']//div[@data-name='start']//th[@class='year']//a[@class='next']/i")
 	private WebElement nextShftYearFromDate;
-	
-	@FindBy(xpath = "(//a[@class='previous']/following-sibling::span)[2]")
+
+	@FindBy(xpath = "//div[@data-name='start']//th[@class='year']/span")
 	private WebElement fromDateYear;
-	
-	@FindBy(xpath = "(//i[@class='glyphicon glyphicon-chevron-left'])[1]")
+
+	@FindBy(xpath = "//div[@class='form-inline']//div[@data-name='start']//th[@class='month']//a[@class='previous']/i")
 	private WebElement previousShftMonthFromDate;
-	
-	@FindBy(xpath = "(//i[@class='glyphicon glyphicon-chevron-right'])[1]")
+
+	@FindBy(xpath = "//div[@class='form-inline']//div[@data-name='start']//th[@class='month']//a[@class='next']/i")
 	private WebElement nextShftMonthFromDate;
-	
-	@FindBy(xpath = "(//a[@class='previous']/following-sibling::span)[1]")
+
+	@FindBy(xpath = "//div[@data-name='start']//th[@class='month']/span")
 	private WebElement fromDateMonth;
-	
+
+	@FindBy(xpath = "//div[@data-name='end']//i[@class='glyphicon glyphicon-calendar']")
+	private WebElement toDateCal;
+
+	@FindBy(xpath = "//div[@class='form-inline']//div[@data-name='end']//th[@class='year']//a[@class='previous']/i")
+	private WebElement previousShftYearToDate;
+
+	@FindBy(xpath = "//div[@class='form-inline']//div[@data-name='end']//th[@class='year']//a[@class='next']/i")
+	private WebElement nextShftYearToDate;
+
+	@FindBy(xpath = "//div[@data-name='end']//th[@class='year']/span")
+	private WebElement toDateYear;
+
+	@FindBy(xpath = "//div[@class='form-inline']//div[@data-name='end']//th[@class='month']//a[@class='previous']/i")
+	private WebElement previousShftMonthToDate;
+
+	@FindBy(xpath = "//div[@class='form-inline']//div[@data-name='end']//th[@class='month']//a[@class='next']/i")
+	private WebElement nextShftMonthToDate;
+
+	@FindBy(xpath = "//div[@data-name='end']//th[@class='month']/span")
+	private WebElement toDateMonth;
+
 	@FindBy(id = "refresh")
 	private WebElement goDateBtn;
 	
@@ -89,40 +114,85 @@ public class OperatorsMSOPage extends BasePage{
 	@FindBy(xpath = "//table[@class='table table-striped']/tbody/tr")
 	private List<WebElement> listOfRecords;
 	
+	@FindBy(xpath = "//table[@class='table table-striped']/tbody/tr//td[2]")
+	private List<WebElement> msoUserNameDisplayingList;
+	
 	@FindBy(xpath = "//table[@class='table table-striped']/tbody/tr[1]//td[2]")
 	private WebElement msoUserNameDisplaying;
 	
 	@FindBy(xpath = "//table[@class='table table-striped']/tbody/tr[1]/td[3]")
 	private WebElement msoFirstNameDisplaying;
 	
+	@FindBy(xpath = "//table[@class='table table-striped']/tbody/tr/td[3]")
+	private List<WebElement> msoFirstNameDisplayingList;
+	
 	@FindBy(xpath = "//table[@class='table table-striped']/tbody/tr[1]/td[8]")
 	private WebElement msoBigCityDisplaying;
+	
+	@FindBy(xpath = "//table[@class='table table-striped']/tbody/tr/td[8]")
+	private List<WebElement> msoBigCityDisplayingList;
 	
 	@FindBy(xpath = "//table[@class='table table-striped']/tbody/tr[1]/td[last()-3]")
 	private WebElement msoStatusDisplaying;
 	
+	@FindBy(xpath = "//table[@class='table table-striped']/tbody/tr/td[last()-3]")
+	private List<WebElement> msoStatusDisplayingList;
+	
+	@FindBy(xpath = "//table[@class='table table-striped']/tbody/tr[1]")
+	private WebElement firstRow;
+	
+	@FindBy(xpath = "//button[text()='Next']")
+	private WebElement nextBtnLink;
+	
+	@FindBy(xpath = "//li[@class='prev']/button")
+	private WebElement previousLink;
+
+	
 	String firstRowData;
 	
-	public void selectDates(String fromDate) throws InterruptedException
-	{
+	public void selectDates(String fromDate, String toDate) throws InterruptedException {
+		waitTillElementIsClickable(fromDateCal);
 		fromDateCal.click();
-		waitTillElementIsClickable(previousShftYearFromDate);
 		String fromDateArr[] = fromDate.split("-");
-		dh.selectYear(previousShftYearFromDate, nextShftYearFromDate, Integer.parseInt(fromDateYear.getText()), Integer.parseInt(fromDateArr[2]));
+		String toDateArr[] = toDate.split("-");
+		waitTillElementIsClickable(previousShftYearFromDate);
+		dh.selectYear(previousShftYearFromDate, nextShftYearFromDate, Integer.parseInt(fromDateYear.getText()),
+				Integer.parseInt(fromDateArr[2]));
+		Thread.sleep(1000);
 		waitTillElementIsClickable(previousShftMonthFromDate);
-		dh.selectMonth(previousShftMonthFromDate, nextShftMonthFromDate, fromDateMonth.getText(), Integer.parseInt(fromDateArr[1]));
+		dh.selectMonth(previousShftMonthFromDate, nextShftMonthFromDate, fromDateMonth.getText(),
+				Integer.parseInt(fromDateArr[1]));
 		Thread.sleep(1000);
 		dh.selectDate(fromDateXp1, fromDateXp2, Integer.parseInt(fromDateArr[0]));
+		Thread.sleep(1000);
+
+		waitTillElementIsClickable(toDateCal);
+		toDateCal.click();
+		waitTillElementIsClickable(nextShftYearToDate);
+		dh.selectYear(previousShftYearToDate, nextShftYearToDate, Integer.parseInt(toDateYear.getText()),
+				Integer.parseInt(toDateArr[2]));
+		Thread.sleep(3000);
+		waitTillElementIsClickable(nextShftMonthToDate);
+		dh.selectMonth(previousShftMonthToDate, nextShftMonthToDate, toDateMonth.getText(),
+				Integer.parseInt(toDateArr[1]));
+		Thread.sleep(1000);
+		dh.selectDate(toDateXp1, toDateXp2, Integer.parseInt(toDateArr[0]));
+		Thread.sleep(1000);
+		waitTillElementIsClickable(goDateBtn);
 		goDateBtn.click();
-		
+
 	}
+
 	
 	
-	public void verifyCount()
+	public int verifyCount() throws InterruptedException
 	{
-		logger.info("Count displaying: "+countValueNumber.getText());
-		logger.info("Number of records displaying are: "+listOfRecords.size());
-		assertEquals(Integer.parseInt(countValueNumber.getText()), listOfRecords.size(), "Count is displaying wrong number");
+		String countDisplayingNo = countValueNumber.getText();
+		logger.info("Count displaying: "+countDisplayingNo);
+		int noOfRecords = countNoOfRecords(listOfRecords, nextBtnLink, previousLink);
+		logger.info("Number of records displaying are: "+noOfRecords);
+		assertEquals(Integer.parseInt(countDisplayingNo), noOfRecords, "Count is displaying wrong number");
+		return noOfRecords;
 	}
 
 	public void searchByUserName(String userName) throws InterruptedException
@@ -135,6 +205,11 @@ public class OperatorsMSOPage extends BasePage{
 		waitTillElementIsVisible(listOfRecords.get(0));
 	}
 	
+	public void clearUserNameTextFilter()
+	{
+		clearTextFilter(msoUserNameTxtFld, msoUserNameGoBtn);
+	}
+	
 	public void searchByFirstName(String firstName) throws InterruptedException
 	{
 		logger.info("MSO FirstName entered is: "+firstName);
@@ -142,6 +217,10 @@ public class OperatorsMSOPage extends BasePage{
 		waitTillElementIsClickable(msoFirstNameGoBtn);
 		msoFirstNameGoBtn.click();
 		Thread.sleep(2000);
+	}
+	public void clearFirstrNameTextFilter()
+	{
+		clearTextFilter(msoFirstNameTxtFld, msoFirstNameGoBtn);
 	}
 	
 	public void searchByBigCity(String bigCity) throws InterruptedException
@@ -152,6 +231,10 @@ public class OperatorsMSOPage extends BasePage{
 		bigCityGoBtn.click();
 		Thread.sleep(2000);
 	}
+	public void clearBigCityTextFilter()
+	{
+		clearTextFilter(bigCityTxtFld, bigCityGoBtn);
+	}
 	
 	public void searchByMSOStatus(String status) throws InterruptedException
 	{
@@ -160,6 +243,10 @@ public class OperatorsMSOPage extends BasePage{
 		msoStatus.selectByVisibleText(status);
 		Thread.sleep(2000);
 		
+	}
+	public void clearMSOStatusFilter()
+	{
+		selectElement(msoStatusDropDown, "ALL");
 	}
 	
 	public boolean verifyDataIsPresent()
@@ -175,71 +262,109 @@ public class OperatorsMSOPage extends BasePage{
 	}
 	
 	
+	public void verifySearch(String filterName, List<WebElement> elementList, String dataExp, WebElement nextLink,
+			WebElement previousLink) throws InterruptedException {
+		Thread.sleep(2000);
+		int noOfElements = countNoOfRecords(elementList, nextLink, previousLink);
+		logger.info("Number of records present for this " + filterName + " are: " + noOfElements);
+		int verifyRowNo = verifyDataDusplaying(elementList, dataExp, nextLink, previousLink);
+
+		if (noOfElements != verifyRowNo) {
+			logger.info("========================================================");
+			logger.info("Functional Test Case for " + filterName + " filter is failed");
+			logger.info(filterName + " is displaying wrong in Row Number " + verifyRowNo);
+			logger.info("========================================================");
+			Assert.assertTrue(false);
+		} else {
+			logger.info("========================================================");
+			logger.info("Functional test case for " + filterName + " filter test case is passed.");
+			logger.info("========================================================");
+		}
+	}
+	
+	
 	public void testOperators_MSO() throws InterruptedException, IOException
 	{
 		Assert.assertEquals(driver.getTitle(), "MSO List", "This is not MSO List Page.");
-		selectDates("01-01-2016");
+		selectDates("01-01-2015", "01-01-2019");
 		Thread.sleep(5000);
-		
+		waitTillElementIsVisible(firstRow);
 		if(verifyDataIsPresent())
 		{
 			logger.info("No MSO is created within the selected timeline.");
 			return;
 		}
+		waitForVisibiltyOfListOfElements(listOfRecords);
 		verifyCount();
 		
 		String msoUserName = DemoExcelLibrary3.getexcelData("hits admin data", 1, 1, path);
+		
 		searchByUserName(msoUserName);
-		waitTillElementIsVisible(listOfRecords.get(0));
+		Thread.sleep(5000);
+		waitTillElementIsVisible(firstRow);
 		if(verifyDataIsPresent())
 		{
+			logger.info("No MSO is with the user name "+msoUserName+" in the selected timeline.");
 			return;
 		}
-		Assert.assertEquals(msoUserNameDisplaying.getText(), msoUserName, "MSO username entered and MSO username displaying are not same");
+		
+		waitForVisibiltyOfListOfElements(listOfRecords);
+		
 		String msoFirstName = msoFirstNameDisplaying.getText();
 		String msoBigCity = msoBigCityDisplaying.getText();
 		String msoStatus = msoStatusDisplaying.getText();
 		
+		verifySearch("MSO User Name", msoUserNameDisplayingList, msoUserName, nextBtnLink, previousLink);
+		clearUserNameTextFilter();
+		Thread.sleep(2000);
+		waitForVisibiltyOfListOfElements(listOfRecords);
 		
 		searchByFirstName(msoFirstName);
-		waitTillElementIsVisible(listOfRecords.get(0));
+		Thread.sleep(5000);
+		waitTillElementIsVisible(firstRow);
 		if(verifyDataIsPresent())
 		{
+			logger.info("No MSO is with the first name "+msoFirstName+" in the selected timeline.");
 			return;
 		}
-		Assert.assertEquals(msoFirstName, msoFirstNameDisplaying.getText(), "MSO firstname entered and MSO firstname displaying are not same");
-		
+		waitForVisibiltyOfListOfElements(listOfRecords);
+		verifySearch("First Name", msoFirstNameDisplayingList, msoFirstName, nextBtnLink, previousLink);
+		clearFirstrNameTextFilter();
+		Thread.sleep(2000);
+		waitForVisibiltyOfListOfElements(listOfRecords);
 		
 		searchByBigCity(msoBigCity);
-		waitTillElementIsVisible(listOfRecords.get(0));
+		Thread.sleep(5000);
+		waitTillElementIsVisible(firstRow);
 		if(verifyDataIsPresent())
 		{
+			logger.info("No LCO is with the Big City "+msoBigCity+" in the selected timeline.");
 			return;
 		}
-		Assert.assertEquals(msoBigCity, msoBigCityDisplaying.getText(), "MSO Big City entered and MSO Big City displaying are not same");
-		
+		waitForVisibiltyOfListOfElements(listOfRecords);
+		verifySearch("Big City", msoBigCityDisplayingList, msoBigCity, nextBtnLink, previousLink);
+		clearBigCityTextFilter();
+		Thread.sleep(2000);
+		waitForVisibiltyOfListOfElements(listOfRecords);
+
 		
 		searchByMSOStatus(msoStatus);
-		waitTillElementIsVisible(listOfRecords.get(0));
+		Thread.sleep(5000);
+		waitTillElementIsVisible(firstRow);
 		if(verifyDataIsPresent())
 		{
+			logger.info("No MSO  with the Status "+msoStatus+" in the selected timeline.");
 			return;
 		}
-		Assert.assertEquals(msoStatus, msoStatusDisplaying.getText(), "MSO Big City entered and MSO Big City displaying are not same");
+		waitForVisibiltyOfListOfElements(listOfRecords);
+		verifySearch("MSO Status", msoStatusDisplayingList, msoStatus, nextBtnLink, previousLink);
+		clearMSOStatusFilter();
+		Thread.sleep(2000);
+		waitForVisibiltyOfListOfElements(listOfRecords);
 		
-		verifyCount();
-		logger.info(listOfRecords.get(0).getText());
-		msoDownloadBtn.click();
-		try
-		{
-			Runtime run = Runtime.getRuntime();
-			run.exec(System.getProperty("user.dir")+"\\exeFiles\\saveReport.exe");
-		}
-		catch (Exception e) {
-			
-		}
+		downloadReport(msoDownloadBtn);
 		
-		
+		Thread.sleep(5000);
 				
 	}
 	

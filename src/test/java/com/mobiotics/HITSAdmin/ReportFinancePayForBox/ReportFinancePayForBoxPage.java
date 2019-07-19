@@ -20,10 +20,10 @@ public class ReportFinancePayForBoxPage extends ReportUtilityClass {
 
 	static final Logger logger = Logger.getLogger(ReportFinancePayForBoxPage.class);
 
-	private static String fromDateXp1 = "/html/body/div[2]/div[1]/div[2]/div/div/div[1]/div[2]/table/tbody/tr[";
+	private static String fromDateXp1 = "//div[@data-name='start']//table/tbody/tr[";
 	private static String fromDateXp2 = "]/td[";
 
-	private static String toDateXp1 = "/html/body/div[2]/div[1]/div[2]/div/div/div[2]/div[2]/table/tbody/tr[";
+	private static String toDateXp1 = "//div[@data-name='end']//table/tbody/tr[";
 	private static String toDateXp2 = "]/td[";
 
 	private String path = System.getProperty("user.dir") + "\\excelFiles\\tsetData.xls";
@@ -33,50 +33,51 @@ public class ReportFinancePayForBoxPage extends ReportUtilityClass {
 	@FindBy(xpath = "//h1[contains(text(), 'Payforbox Report')]")
 	private WebElement pageTitleTxt;
 
-	@FindBy(xpath = "(//i[@class='glyphicon glyphicon-calendar'])[1]")
+	@FindBy(xpath = "//div[@data-name='start']//i[@class='glyphicon glyphicon-calendar']")
 	private WebElement fromDateCal;
 
-	@FindBy(xpath = "(//i[@class='glyphicon glyphicon-chevron-left'])[2]")
+	@FindBy(xpath = "//div[@class='form-inline']//div[@data-name='start']//th[@class='year']//a[@class='previous']/i")
 	private WebElement previousShftYearFromDate;
 
-	@FindBy(xpath = "(//i[@class='glyphicon glyphicon-chevron-right'])[2]")
+	@FindBy(xpath = "//div[@class='form-inline']//div[@data-name='start']//th[@class='year']//a[@class='next']/i")
 	private WebElement nextShftYearFromDate;
 
-	@FindBy(xpath = "(//a[@class='previous']/following-sibling::span)[2]")
+	@FindBy(xpath = "//div[@data-name='start']//th[@class='year']/span")
 	private WebElement fromDateYear;
 
-	@FindBy(xpath = "(//i[@class='glyphicon glyphicon-chevron-left'])[1]")
+	@FindBy(xpath = "//div[@class='form-inline']//div[@data-name='start']//th[@class='month']//a[@class='previous']/i")
 	private WebElement previousShftMonthFromDate;
 
-	@FindBy(xpath = "(//i[@class='glyphicon glyphicon-chevron-right'])[1]")
+	@FindBy(xpath = "//div[@class='form-inline']//div[@data-name='start']//th[@class='month']//a[@class='next']/i")
 	private WebElement nextShftMonthFromDate;
 
-	@FindBy(xpath = "(//a[@class='previous']/following-sibling::span)[1]")
+	@FindBy(xpath = "//div[@data-name='start']//th[@class='month']/span")
 	private WebElement fromDateMonth;
 
-	@FindBy(xpath = "(//i[@class='glyphicon glyphicon-calendar'])[2]")
+	@FindBy(xpath = "//div[@data-name='end']//i[@class='glyphicon glyphicon-calendar']")
 	private WebElement toDateCal;
 
-	@FindBy(xpath = "(//i[@class='glyphicon glyphicon-chevron-left'])[4]")
+	@FindBy(xpath = "//div[@class='form-inline']//div[@data-name='end']//th[@class='year']//a[@class='previous']/i")
 	private WebElement previousShftYearToDate;
 
-	@FindBy(xpath = "(//i[@class='glyphicon glyphicon-chevron-right'])[4]")
+	@FindBy(xpath = "//div[@class='form-inline']//div[@data-name='end']//th[@class='year']//a[@class='next']/i")
 	private WebElement nextShftYearToDate;
 
-	@FindBy(xpath = "(//a[@class='previous']/following-sibling::span)[4]")
+	@FindBy(xpath = "//div[@data-name='end']//th[@class='year']/span")
 	private WebElement toDateYear;
 
-	@FindBy(xpath = "(//i[@class='glyphicon glyphicon-chevron-left'])[3]")
+	@FindBy(xpath = "//div[@class='form-inline']//div[@data-name='end']//th[@class='month']//a[@class='previous']/i")
 	private WebElement previousShftMonthToDate;
 
-	@FindBy(xpath = "(//i[@class='glyphicon glyphicon-chevron-right'])[3]")
+	@FindBy(xpath = "//div[@class='form-inline']//div[@data-name='end']//th[@class='month']//a[@class='next']/i")
 	private WebElement nextShftMonthToDate;
 
-	@FindBy(xpath = "(//a[@class='previous']/following-sibling::span)[3]")
+	@FindBy(xpath = "//div[@data-name='end']//th[@class='month']/span")
 	private WebElement toDateMonth;
 
 	@FindBy(id = "refresh")
 	private WebElement goDateBtn;
+
 
 	@FindBy(xpath = "//table[@class='table table-striped']/tbody/tr")
 	private List<WebElement> listOfRecords;
@@ -257,7 +258,7 @@ public class ReportFinancePayForBoxPage extends ReportUtilityClass {
 
 		
 		downloadReport(payForBoxReportDownloadBtn);
-
+		Thread.sleep(5000);
 	}
 
 }

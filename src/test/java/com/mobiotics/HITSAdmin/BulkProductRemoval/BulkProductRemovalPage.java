@@ -88,6 +88,7 @@ public class BulkProductRemovalPage extends BasePage{
 	{
 		verifyPage();
 		uploadBulkFile();
+		Thread.sleep(5000);
 	}
 	
 

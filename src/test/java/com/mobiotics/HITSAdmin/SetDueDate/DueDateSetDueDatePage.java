@@ -56,7 +56,6 @@ public class DueDateSetDueDatePage extends BasePage {
 				logger.info(errMsg.getText());
 		}
 	
-	
-
+		Thread.sleep(5000);
 	}
 }

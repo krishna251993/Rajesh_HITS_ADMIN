@@ -13,6 +13,7 @@ public class TC_Report_Core_ListSuspension_23 extends BaseTest{
 	{
 		ReportCoreListSuspensionPage rsp = new HomePage().navigateToCoreListSuspensionPage();
 		rsp.testReportCoreListSuspensions();
+		Thread.sleep(4000);
 	}
 
 }

@@ -13,6 +13,7 @@ public class TC_Report_Finance_PayForBox_26 extends BaseTest{
 	{
 		ReportFinancePayForBoxPage rfp = new HomePage().navigateToFinancePayForBoxPage();
 		rfp.testReportFinanceListPayments();
+		Thread.sleep(4000);
 	}
 
 }

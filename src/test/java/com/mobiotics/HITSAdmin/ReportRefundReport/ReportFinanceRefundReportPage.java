@@ -408,7 +408,7 @@ public class ReportFinanceRefundReportPage extends ReportUtilityClass {
 		}
 
 		downloadReport(refundReportDownloadBtn);
-
+		Thread.sleep(5000);
 	}
 
 }

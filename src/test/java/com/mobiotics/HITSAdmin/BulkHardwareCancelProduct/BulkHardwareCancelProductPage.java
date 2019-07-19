@@ -76,6 +76,7 @@ public class BulkHardwareCancelProductPage extends BasePage{
 	{
 		verifyPage();
 		uploadBulkFile();
+		Thread.sleep(5000);
 	}
 	
 	

@@ -28,33 +28,58 @@ public class OperatorsDPOPage extends BasePage{
 	
 	static final Logger logger=Logger.getLogger(OperatorsDPOPage.class);
 	
-	private static String fromDateXp1 = "/html/body/div[2]/div[1]/div[2]/div[1]/div/div[1]/div[2]/table/tbody/tr[";
+	private static String fromDateXp1 = "//div[@data-name='start']//table/tbody/tr[";
 	private static String fromDateXp2 = "]/td[";
+
+	private static String toDateXp1 = "//div[@data-name='end']//table/tbody/tr[";
+	private static String toDateXp2 = "]/td[";
+
 	private String path = System.getProperty("user.dir")+"\\excelFiles\\tsetData.xls";
 	
 	private DateHelper dh = new DateHelper();
 	
-	@FindBy(xpath = "(//i[@class='glyphicon glyphicon-calendar'])[1]")
+	@FindBy(xpath = "//div[@data-name='start']//i[@class='glyphicon glyphicon-calendar']")
 	private WebElement fromDateCal;
-	
-	@FindBy(xpath = "(//i[@class='glyphicon glyphicon-chevron-left'])[2]")
+
+	@FindBy(xpath = "//div[@class='form-inline']//div[@data-name='start']//th[@class='year']//a[@class='previous']/i")
 	private WebElement previousShftYearFromDate;
-	
-	@FindBy(xpath = "(//i[@class='glyphicon glyphicon-chevron-right'])[2]")
+
+	@FindBy(xpath = "//div[@class='form-inline']//div[@data-name='start']//th[@class='year']//a[@class='next']/i")
 	private WebElement nextShftYearFromDate;
-	
-	@FindBy(xpath = "(//a[@class='previous']/following-sibling::span)[2]")
+
+	@FindBy(xpath = "//div[@data-name='start']//th[@class='year']/span")
 	private WebElement fromDateYear;
-	
-	@FindBy(xpath = "(//i[@class='glyphicon glyphicon-chevron-left'])[1]")
+
+	@FindBy(xpath = "//div[@class='form-inline']//div[@data-name='start']//th[@class='month']//a[@class='previous']/i")
 	private WebElement previousShftMonthFromDate;
-	
-	@FindBy(xpath = "(//i[@class='glyphicon glyphicon-chevron-right'])[1]")
+
+	@FindBy(xpath = "//div[@class='form-inline']//div[@data-name='start']//th[@class='month']//a[@class='next']/i")
 	private WebElement nextShftMonthFromDate;
-	
-	@FindBy(xpath = "(//a[@class='previous']/following-sibling::span)[1]")
+
+	@FindBy(xpath = "//div[@data-name='start']//th[@class='month']/span")
 	private WebElement fromDateMonth;
-	
+
+	@FindBy(xpath = "//div[@data-name='end']//i[@class='glyphicon glyphicon-calendar']")
+	private WebElement toDateCal;
+
+	@FindBy(xpath = "//div[@class='form-inline']//div[@data-name='end']//th[@class='year']//a[@class='previous']/i")
+	private WebElement previousShftYearToDate;
+
+	@FindBy(xpath = "//div[@class='form-inline']//div[@data-name='end']//th[@class='year']//a[@class='next']/i")
+	private WebElement nextShftYearToDate;
+
+	@FindBy(xpath = "//div[@data-name='end']//th[@class='year']/span")
+	private WebElement toDateYear;
+
+	@FindBy(xpath = "//div[@class='form-inline']//div[@data-name='end']//th[@class='month']//a[@class='previous']/i")
+	private WebElement previousShftMonthToDate;
+
+	@FindBy(xpath = "//div[@class='form-inline']//div[@data-name='end']//th[@class='month']//a[@class='next']/i")
+	private WebElement nextShftMonthToDate;
+
+	@FindBy(xpath = "//div[@data-name='end']//th[@class='month']/span")
+	private WebElement toDateMonth;
+
 	@FindBy(id = "refresh")
 	private WebElement goDateBtn;
 	
@@ -94,39 +119,84 @@ public class OperatorsDPOPage extends BasePage{
 	@FindBy(xpath = "//table[@class='table table-striped']/tbody/tr[1]//td[2]")
 	private WebElement dpoUserNameDisplaying;
 	
+	@FindBy(xpath = "//table[@class='table table-striped']/tbody/tr//td[2]")
+	private List<WebElement> dpoUserNameDisplayingList;
+	
 	@FindBy(xpath = "//table[@class='table table-striped']/tbody/tr[1]/td[3]")
 	private WebElement dpoFirstNameDisplaying;
+	
+	@FindBy(xpath = "//table[@class='table table-striped']/tbody/tr/td[3]")
+	private List<WebElement> dpoFirstNameDisplayingList;
 	
 	@FindBy(xpath = "//table[@class='table table-striped']/tbody/tr[1]/td[8]")
 	private WebElement dpoBigCityDisplaying;
 	
+	@FindBy(xpath = "//table[@class='table table-striped']/tbody/tr/td[8]")
+	private List<WebElement> dpoBigCityDisplayingList;
+	
 	@FindBy(xpath = "//table[@class='table table-striped']/tbody/tr[1]/td[last()-3]")
 	private WebElement dpoStatusDisplaying;
 	
+	@FindBy(xpath = "//table[@class='table table-striped']/tbody/tr[1]/td[last()-3]")
+	private List<WebElement> dpoStatusDisplayingList;
+	
+	@FindBy(xpath = "//table[@class='table table-striped']/tbody/tr[1]")
+	private WebElement firstRow;
+	
+	@FindBy(xpath = "//button[text()='Next']")
+	private WebElement nextBtnLink;
+	
+	@FindBy(xpath = "//li[@class='prev']/button")
+	private WebElement previousLink;
+
+	
 String firstRowData;
 	
-	public void selectDates(String fromDate) throws InterruptedException
-	{
-		fromDateCal.click();
-		waitTillElementIsClickable(previousShftYearFromDate);
-		String fromDateArr[] = fromDate.split("-");
-		dh.selectYear(previousShftYearFromDate, nextShftYearFromDate, Integer.parseInt(fromDateYear.getText()), Integer.parseInt(fromDateArr[2]));
-		waitTillElementIsClickable(previousShftMonthFromDate);
-		dh.selectMonth(previousShftMonthFromDate, nextShftMonthFromDate, fromDateMonth.getText(), Integer.parseInt(fromDateArr[1]));
-		Thread.sleep(1000);
-		dh.selectDate(fromDateXp1, fromDateXp2, Integer.parseInt(fromDateArr[0]));
-		goDateBtn.click();
-		
-	}
-	
-	
-	public void verifyCount()
-	{
-		logger.info("Count displaying: "+countValueNumber.getText());
-		logger.info("Number of records displaying are: "+listOfRecords.size());
-		assertEquals(Integer.parseInt(countValueNumber.getText()), listOfRecords.size(), "Count is displaying wrong number");
-	}
-	
+public void selectDates(String fromDate, String toDate) throws InterruptedException {
+	waitTillElementIsClickable(fromDateCal);
+	fromDateCal.click();
+	String fromDateArr[] = fromDate.split("-");
+	String toDateArr[] = toDate.split("-");
+	waitTillElementIsClickable(previousShftYearFromDate);
+	dh.selectYear(previousShftYearFromDate, nextShftYearFromDate, Integer.parseInt(fromDateYear.getText()),
+			Integer.parseInt(fromDateArr[2]));
+	Thread.sleep(1000);
+	waitTillElementIsClickable(previousShftMonthFromDate);
+	dh.selectMonth(previousShftMonthFromDate, nextShftMonthFromDate, fromDateMonth.getText(),
+			Integer.parseInt(fromDateArr[1]));
+	Thread.sleep(1000);
+	dh.selectDate(fromDateXp1, fromDateXp2, Integer.parseInt(fromDateArr[0]));
+	Thread.sleep(1000);
+
+	waitTillElementIsClickable(toDateCal);
+	toDateCal.click();
+	waitTillElementIsClickable(nextShftYearToDate);
+	dh.selectYear(previousShftYearToDate, nextShftYearToDate, Integer.parseInt(toDateYear.getText()),
+			Integer.parseInt(toDateArr[2]));
+	Thread.sleep(3000);
+	waitTillElementIsClickable(nextShftMonthToDate);
+	dh.selectMonth(previousShftMonthToDate, nextShftMonthToDate, toDateMonth.getText(),
+			Integer.parseInt(toDateArr[1]));
+	Thread.sleep(1000);
+	dh.selectDate(toDateXp1, toDateXp2, Integer.parseInt(toDateArr[0]));
+	Thread.sleep(1000);
+	waitTillElementIsClickable(goDateBtn);
+	goDateBtn.click();
+
+}
+
+
+
+public int verifyCount() throws InterruptedException
+{
+	String countDisplayingNo = countValueNumber.getText();
+	logger.info("Count displaying: "+countDisplayingNo);
+	int noOfRecords = countNoOfRecords(listOfRecords, nextBtnLink, previousLink);
+	logger.info("Number of records displaying are: "+noOfRecords);
+	assertEquals(Integer.parseInt(countDisplayingNo), noOfRecords, "Count is displaying wrong number");
+	return noOfRecords;
+}
+
 	
 	public void searchByUserName(String userName) throws InterruptedException
 	{
@@ -137,6 +207,10 @@ String firstRowData;
 		Thread.sleep(5000);
 		waitTillElementIsVisible(listOfRecords.get(0));
 	}
+	public void clearUserNameTextFilter()
+	{
+		clearTextFilter(dpoUserNameTxtFld, dpoUserNameGoBtn);
+	}
 	
 	public void searchByFirstName(String firstName) throws InterruptedException
 	{
@@ -145,6 +219,10 @@ String firstRowData;
 		waitTillElementIsClickable(dpoFirstNameGoBtn);
 		dpoFirstNameGoBtn.click();
 		Thread.sleep(2000);
+	}
+	public void clearFirstrNameTextFilter()
+	{
+		clearTextFilter(dpoFirstNameTxtFld, dpoFirstNameGoBtn);
 	}
 	
 	public void searchByBigCity(String bigCity) throws InterruptedException
@@ -155,14 +233,43 @@ String firstRowData;
 		bigCityGoBtn.click();
 		Thread.sleep(2000);
 	}
+	public void clearBigCityTextFilter()
+	{
+		clearTextFilter(bigCityTxtFld, bigCityGoBtn);
+	}
 	
-	public void searchByMSOStatus(String status) throws InterruptedException
+	public void searchByDPOStatus(String status) throws InterruptedException
 	{
 		logger.info("DPO status selected is: "+status);
 		Select dpoStatus = new Select(dpoStatusDropDown);
 		dpoStatus.selectByVisibleText(status);
 		Thread.sleep(2000);
 		
+	}
+	public void clearLCOStatusFilter()
+	{
+		selectElement(dpoStatusDropDown, "ALL");
+	}
+	
+
+	public void verifySearch(String filterName, List<WebElement> elementList, String dataExp, WebElement nextLink,
+			WebElement previousLink) throws InterruptedException {
+		Thread.sleep(2000);
+		int noOfElements = countNoOfRecords(elementList, nextLink, previousLink);
+		logger.info("Number of records present for this " + filterName + " are: " + noOfElements);
+		int verifyRowNo = verifyDataDusplaying(elementList, dataExp, nextLink, previousLink);
+
+		if (noOfElements != verifyRowNo) {
+			logger.info("========================================================");
+			logger.info("Functional Test Case for " + filterName + " filter is failed");
+			logger.info(filterName + " is displaying wrong in Row Number " + verifyRowNo);
+			logger.info("========================================================");
+			Assert.assertTrue(false);
+		} else {
+			logger.info("========================================================");
+			logger.info("Functional test case for " + filterName + " filter test case is passed.");
+			logger.info("========================================================");
+		}
 	}
 	
 	public boolean verifyDataIsPresent()
@@ -181,72 +288,86 @@ String firstRowData;
 	public void testOperators_DPO() throws InterruptedException, IOException
 	{
 		Assert.assertEquals(driver.getTitle(), "DPO List", "This is not DPO List Page.");
-		selectDates("01-01-2016");
+		
+		selectDates("01-01-2015", "01-01-2019");
 		Thread.sleep(5000);
+		waitTillElementIsVisible(firstRow);
 		if(verifyDataIsPresent())
 		{
 			logger.info("No DPO is created within the selected timeline.");
 			return;
 		}
-		
-		if(verifyDataIsPresent())
-		{
-			return;
-		}
+		waitForVisibiltyOfListOfElements(listOfRecords);
 		verifyCount();
 		
 		String dpoUserName = DemoExcelLibrary3.getexcelData("hits admin data", 1, 2, path);
+		
 		searchByUserName(dpoUserName);
-		waitTillElementIsVisible(listOfRecords.get(0));
+		Thread.sleep(5000);
+		waitTillElementIsVisible(firstRow);
 		if(verifyDataIsPresent())
 		{
+			logger.info("No DPO is with the user name "+dpoUserName+" in the selected timeline.");
 			return;
 		}
-		Assert.assertEquals(dpoUserNameDisplaying.getText(), dpoUserName, "DPO username entered and DPO username displaying are not same");
+		
+		waitForVisibiltyOfListOfElements(listOfRecords);
+		
 		String dpoFirstName = dpoFirstNameDisplaying.getText().trim();
 		String dpoBigCity = dpoBigCityDisplaying.getText().trim();
 		String dpoStatus = dpoStatusDisplaying.getText();
 		
+		verifySearch("DPO User Name", dpoUserNameDisplayingList, dpoUserName, nextBtnLink, previousLink);
+		clearUserNameTextFilter();
+		Thread.sleep(2000);
+		waitForVisibiltyOfListOfElements(listOfRecords);
 		
 		searchByFirstName(dpoFirstName);
-		waitTillElementIsVisible(listOfRecords.get(0));
+		Thread.sleep(5000);
+		waitTillElementIsVisible(firstRow);
 		if(verifyDataIsPresent())
 		{
+			logger.info("No DPO is with the first name "+dpoFirstName+" in the selected timeline.");
 			return;
 		}
-		Assert.assertEquals(dpoFirstName, dpoFirstNameDisplaying.getText(), "DPO firstname entered and DPO firstname displaying are not same");
+		waitForVisibiltyOfListOfElements(listOfRecords);
+		verifySearch("First Name", dpoFirstNameDisplayingList, dpoFirstName, nextBtnLink, previousLink);
+		clearFirstrNameTextFilter();
+		Thread.sleep(2000);
+		waitForVisibiltyOfListOfElements(listOfRecords);
 		
 		
 		searchByBigCity(dpoBigCity);
-		waitTillElementIsVisible(listOfRecords.get(0));
+		Thread.sleep(5000);
+		waitTillElementIsVisible(firstRow);
 		if(verifyDataIsPresent())
 		{
+			logger.info("No DPO is with the Big City "+dpoBigCity+" in the selected timeline.");
 			return;
 		}
-		Assert.assertEquals(dpoBigCity, dpoBigCityDisplaying.getText(), "DPO Big City entered and DPO Big City displaying are not same");
+		waitForVisibiltyOfListOfElements(listOfRecords);
+		verifySearch("Big City", dpoBigCityDisplayingList, dpoBigCity, nextBtnLink, previousLink);
+		clearBigCityTextFilter();
+		Thread.sleep(2000);
+		waitForVisibiltyOfListOfElements(listOfRecords);
 		
-		
-		searchByMSOStatus(dpoStatus);
-		waitTillElementIsVisible(listOfRecords.get(0));
+		searchByDPOStatus(dpoStatus);
+		Thread.sleep(5000);
+		waitTillElementIsVisible(firstRow);
 		if(verifyDataIsPresent())
 		{
+			logger.info("No DPO  with the Status "+dpoStatus+" in the selected timeline.");
 			return;
 		}
-		Assert.assertEquals(dpoStatus, dpoStatusDisplaying.getText(), "DPO Big City entered and DPO Big City displaying are not same");
+		waitForVisibiltyOfListOfElements(listOfRecords);
+		verifySearch("DPO Status", dpoStatusDisplayingList, dpoStatus, nextBtnLink, previousLink);
+		clearLCOStatusFilter();
+		Thread.sleep(2000);
+		waitForVisibiltyOfListOfElements(listOfRecords);
 		
-		verifyCount();
-		logger.info(listOfRecords.get(0).getText());
-		dpoDownloadBtn.click();
-		try
-		{
-			Runtime run = Runtime.getRuntime();
-			run.exec(System.getProperty("user.dir")+"\\exeFiles\\saveReport.exe");
-		}
-		catch (Exception e) {
-			
-		}
+		downloadReport(dpoDownloadBtn);
 		
-		
+		Thread.sleep(5000);
 				
 	}
 	

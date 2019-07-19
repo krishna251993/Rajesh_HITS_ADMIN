@@ -23,7 +23,7 @@ public class ReportCoreListDevicesPage extends ReportUtilityClass{
 
 	static final Logger logger = Logger.getLogger(ReportCoreListDevicesPage.class);
 
-	private static String fromDateXp1 = "/html/body/div[3]/div[1]/div[2]/div[3]/div/div[1]/div[2]/table/tbody/tr[";
+	private static String fromDateXp1 = "//div[@data-name='start']//table/tbody/tr[";
 	private static String fromDateXp2 = "]/td[";
 	private String path = System.getProperty("user.dir")+"\\excelFiles\\tsetData.xls";
 	
@@ -32,31 +32,32 @@ public class ReportCoreListDevicesPage extends ReportUtilityClass{
 	@FindBy(xpath = "//h1[contains(text(), 'Device List')]")
 	private WebElement pageTitleTxt;
 	
+	
 	@FindBy(xpath = "//div[contains(text(), 'Please select table')]")
 	private WebElement selectTableMsg;
 	
 	@FindBy(id = "postfix")
 	private WebElement tableForData;
 	
-	@FindBy(xpath = "(//i[@class='glyphicon glyphicon-calendar'])[1]")
+	@FindBy(xpath = "//div[@data-name='start']//i[@class='glyphicon glyphicon-calendar']")
 	private WebElement fromDateCal;
 	
-	@FindBy(xpath = "(//i[@class='glyphicon glyphicon-chevron-left'])[2]")
+	@FindBy(xpath = "//div[@class='form-inline']//div[@data-name='start']//th[@class='year']//a[@class='previous']/i")
 	private WebElement previousShftYearFromDate;
 	
-	@FindBy(xpath = "(//i[@class='glyphicon glyphicon-chevron-right'])[2]")
+	@FindBy(xpath = "//div[@class='form-inline']//div[@data-name='start']//th[@class='year']//a[@class='next']/i")
 	private WebElement nextShftYearFromDate;
 	
-	@FindBy(xpath = "(//a[@class='previous']/following-sibling::span)[2]")
+	@FindBy(xpath = "//div[@data-name='start']//th[@class='year']/span")
 	private WebElement fromDateYear;
 	
-	@FindBy(xpath = "(//i[@class='glyphicon glyphicon-chevron-left'])[1]")
+	@FindBy(xpath = "//div[@class='form-inline']//div[@data-name='start']//th[@class='month']//a[@class='previous']/i")
 	private WebElement previousShftMonthFromDate;
 	
-	@FindBy(xpath = "(//i[@class='glyphicon glyphicon-chevron-right'])[1]")
+	@FindBy(xpath = "//div[@class='form-inline']//div[@data-name='start']//th[@class='month']//a[@class='next']/i")
 	private WebElement nextShftMonthFromDate;
 	
-	@FindBy(xpath = "(//a[@class='previous']/following-sibling::span)[1]")
+	@FindBy(xpath = "//div[@data-name='start']//th[@class='month']/span")
 	private WebElement fromDateMonth;
 	
 	@FindBy(id = "refresh")
@@ -64,6 +65,9 @@ public class ReportCoreListDevicesPage extends ReportUtilityClass{
 	
 	@FindBy(xpath = "//button[text()='Next']")
 	private WebElement nextBtnLink;
+	
+	@FindBy(xpath = "//button[text()='Prev']")
+	private WebElement previousLink;
 	
 	@FindBy(xpath = "//div[text()='Count : ']/span")
 	private WebElement countValueNumber;
@@ -80,7 +84,7 @@ public class ReportCoreListDevicesPage extends ReportUtilityClass{
 	@FindBy(name = "productid")
 	private WebElement productIdTxtFld;
 	
-	@FindBy(xpath = "//input[@name='customerid']/following-sibling::button")
+	@FindBy(xpath = "//input[@name='productid']/following-sibling::button")
 	private WebElement productIdGoBtn;
 	
 	@FindBy(name = "productname")
@@ -113,20 +117,38 @@ public class ReportCoreListDevicesPage extends ReportUtilityClass{
 	@FindBy(xpath = "//table[@class='table table-striped']/tbody/tr[1]/td[1]")
 	private WebElement initiatorIdDisplaying;
 	
+	@FindBy(xpath = "//table[@class='table table-striped']/tbody/tr/td[1]")
+	private List<WebElement> initiatorIdDisplayingList;
+	
 	@FindBy(xpath = "//table[@class='table table-striped']/tbody/tr[1]/td[2]")
 	private WebElement serialNoDisplaying;
+	
+	@FindBy(xpath = "//table[@class='table table-striped']/tbody/tr/td[2]")
+	private List<WebElement> serialNoDisplayingList;
 	
 	@FindBy(xpath = "//table[@class='table table-striped']/tbody/tr[1]/td[3]")
 	private WebElement customerIdDisplaying;
 	
+	@FindBy(xpath = "//table[@class='table table-striped']/tbody/tr/td[3]")
+	private List<WebElement> customerIdDisplayingList;
+	
 	@FindBy(xpath = "//table[@class='table table-striped']/tbody/tr[1]/td[last()-3]")
 	private WebElement productIdDisplaying;
+	
+	@FindBy(xpath = "//table[@class='table table-striped']/tbody/tr/td[last()-3]")
+	private List<WebElement> productIdDisplayingList;
 	
 	@FindBy(xpath = "//table[@class='table table-striped']/tbody/tr[1]/td[last()-2]")
 	private WebElement productNameDisplaying;
 	
+	@FindBy(xpath = "//table[@class='table table-striped']/tbody/tr/td[last()-2]")
+	private List<WebElement> productNameDisplayingList;
+	
 	@FindBy(xpath = "//table[@class='table table-striped']/tbody/tr[1]/td[last()-1]")
 	private WebElement deviceStatusDisplaying;
+	
+	@FindBy(xpath = "//table[@class='table table-striped']/tbody/tr/td[last()-1]")
+	private List<WebElement> deviceStatusDisplayingList;
 	
 	
 	
@@ -175,13 +197,14 @@ public class ReportCoreListDevicesPage extends ReportUtilityClass{
 		
 	}
 	
-	public void verifyCount()
+	public int verifyCount() throws InterruptedException
 	{
 		String countDisplayingNo = countValueNumber.getText();
 		logger.info("Count displaying: "+countDisplayingNo);
-		int noOfRecords = countNoOfRecords(listOfRecords, nextBtnLink);
-		logger.info("Number of records displaying are: "+noOfRecords);
+		int noOfRecords = countNoOfRecords(listOfRecords, nextBtnLink, previousLink);
+		logger.info("Number of records displaying are:  "+noOfRecords);
 		assertEquals(Integer.parseInt(countDisplayingNo), noOfRecords, "Count is displaying wrong number");
+		return noOfRecords;
 	}
 	
 	
@@ -190,9 +213,19 @@ public class ReportCoreListDevicesPage extends ReportUtilityClass{
 		searchByTextFilter(customerIdTxtFld, customerIdGoBtn, customerId);
 	}
 	
+	public void clearCustomerIdTxtFld()
+	{
+		clearTextFilter(customerIdTxtFld, customerIdGoBtn);
+	}
+	
 	public void searchByProductId(String productId)
 	{
 		searchByTextFilter(productIdTxtFld, productIdGoBtn, productId);
+	}
+	
+	public void clearProductIdTxtFld()
+	{
+		clearTextFilter(productIdTxtFld, productIdGoBtn);
 	}
 	
 	public void searchByProductName(String productName)
@@ -200,9 +233,23 @@ public class ReportCoreListDevicesPage extends ReportUtilityClass{
 		searchByTextFilter(productNameTxtFld, productNameGoBtn, productName);
 	}
 	
-	public void searchBySerialNo(String serialNo)
+	public void clearProductNameTxtFld()
 	{
-		searchByTextFilter(serialNoTxtFld, serialNoGoBtn, serialNo);
+		clearTextFilter(productNameTxtFld, productNameGoBtn);
+	}
+	
+	public void searchBySerialNo(String serialNo) throws InterruptedException
+	{
+		serialNoTxtFld.sendKeys(serialNo);
+		Thread.sleep(2000);
+		waitTillElementIsClickable(serialNoGoBtn);
+		serialNoGoBtn.click();
+		
+	}
+	
+	public void clearSerialNoTxtFld()
+	{
+		clearTextFilter(serialNoTxtFld, serialNoGoBtn);
 	}
 	
 	public void searchByInitiatorId(String initiatorId)
@@ -210,16 +257,25 @@ public class ReportCoreListDevicesPage extends ReportUtilityClass{
 		searchByTextFilter(initiatorIdTxtFld, initiatorIdGoBtn, initiatorId);
 	}
 	
+	public void clearInitiatorIdTxtFld()
+	{
+		clearTextFilter(initiatorIdTxtFld, initiatorIdGoBtn);
+	}
+	
 	public void searchBydeviceStatus(String deviceStatus)
 	{
 		selectElement(deviceStatusList, deviceStatus);
+	}
+	public void clearDeviceStatusFilter()
+	{
+		selectElement(deviceStatusList, "ALL");
 	}
 	
 	public boolean verifyData()
 	{
 		waitTillElementIsVisible(firstRow);
 		String firstRowData = firstRow.getText();
-		if(firstRowData.contains("No Data Found") || firstRowData.contains("Failed to get table count."))
+		if(firstRowData.contains("No Device available.") || firstRowData.contains("Failed to get table count."))
 		{
 			logger.info(firstRow.getText());
 			return true;
@@ -227,11 +283,26 @@ public class ReportCoreListDevicesPage extends ReportUtilityClass{
 		return false;
 	}
 	
-	public void verifySearch(WebElement elementDisplaying, String enteredData, String filterName)
+	public void verifySearch(String filterName, List<WebElement> elementList, String dataExp, WebElement nextLink, WebElement previousLink) throws InterruptedException
 	{
-		logger.info(filterName+" entered is: "+enteredData);
-		logger.info(filterName+" is displaying is "+elementDisplaying.getText());
-		Assert.assertEquals(elementDisplaying.getText(), enteredData, filterName+" entered and "+filterName+" is displaying are not same.");
+		Thread.sleep(2000);
+		int noOfElements = verifyCount();
+		int verifyRowNo = verifyDataDusplaying(elementList, dataExp, nextLink, previousLink);
+		
+		if(noOfElements != verifyRowNo)
+		{
+			logger.info("========================================================");
+			logger.info("Functional Test Case for "+  filterName +" filter is failed");
+			logger.info(filterName + " is displaying wrong in Row Number "+verifyRowNo);
+			logger.info("========================================================");
+			Assert.assertTrue(false);
+		}
+		else
+		{
+			logger.info("========================================================");
+			logger.info("Functional test case for "+filterName+ " filter test case is passed.");
+			logger.info("========================================================");
+		}
 	}
 	
 	
@@ -252,11 +323,15 @@ public class ReportCoreListDevicesPage extends ReportUtilityClass{
 			verifyCount();
 			String customerId = DemoExcelLibrary3.getexcelData("hits admin data", 1, 9, path);
 			searchByCustomerId(customerId);
+			Thread.sleep(5000);
+			waitTillElementIsVisible(firstRow);
 			if (verifyData()) 
 			{
+				logger.info("Thre is no device information available for the Customer Id "+customerId+" in the selected table within the selected timeline for t");
 				return;
 			}
-			verifySearch(customerIdDisplaying, customerId, "Customer Id");
+			waitForVisibiltyOfListOfElements(listOfRecords);
+			
 			
 			String productId = productIdDisplaying.getText();
 			String productName = productNameDisplaying.getText();
@@ -264,60 +339,88 @@ public class ReportCoreListDevicesPage extends ReportUtilityClass{
 			String serialNo = serialNoDisplaying.getText();
 			String deviceStatus = deviceStatusDisplaying.getText();
 			
-			
+			verifySearch("Customer Id", customerIdDisplayingList, customerId, nextBtnLink, previousLink);
+			clearCustomerIdTxtFld();
+			Thread.sleep(2000);
+			waitForVisibiltyOfListOfElements(listOfRecords);
 			
 			searchByProductId(productId);
+			Thread.sleep(5000);
+			waitTillElementIsVisible(firstRow);
 			if (verifyData()) 
 			{
 				logger.info("There is no Device with the Product Id "+productId);
 				return;
 			}
-			verifySearch(productIdDisplaying, productId, "Product Id");
+			waitForVisibiltyOfListOfElements(listOfRecords);
+			verifySearch("Product Id", productIdDisplayingList, productId, nextBtnLink, previousLink);
+			clearProductIdTxtFld();
+			Thread.sleep(3000);
+			waitForVisibiltyOfListOfElements(listOfRecords);
 			
 			searchByProductName(productName);
+			Thread.sleep(5000);
+			waitTillElementIsVisible(firstRow);
 			if (verifyData()) 
 			{
 				logger.info("There is no Device with the Product Name "+productName);
 				return;
 			}
-			verifySearch(productNameDisplaying, productName, "Product Name");
+			waitForVisibiltyOfListOfElements(listOfRecords);
+			verifySearch("Product Name", productNameDisplayingList, productName, nextBtnLink, previousLink);
+			clearProductNameTxtFld();
+			Thread.sleep(3000);
+			waitForVisibiltyOfListOfElements(listOfRecords);
 			
 			searchBySerialNo(serialNo);
+			Thread.sleep(5000);
+			waitTillElementIsVisible(firstRow);
 			if (verifyData()) 
 			{
 				logger.info("There is no Device with the serial Number "+serialNo);
 				return;
 			}
-			verifySearch(serialNoDisplaying, serialNo, "Serial Number");
+			waitForVisibiltyOfListOfElements(listOfRecords);
+			verifySearch("Serail Number", serialNoDisplayingList, serialNo, nextBtnLink, previousLink);
+			clearSerialNoTxtFld();
+			Thread.sleep(3000);
+			waitForVisibiltyOfListOfElements(listOfRecords);
 			
 			searchByInitiatorId(initiatorId);
+			Thread.sleep(5000);
+			waitTillElementIsVisible(firstRow);
 			if (verifyData()) 
 			{
 				logger.info("There is no Device with the Initiator Id "+initiatorId);
 				return;
 			}
-			verifySearch(initiatorIdDisplaying, initiatorId, "Initiator Id");
+			waitForVisibiltyOfListOfElements(listOfRecords);
+			verifySearch("Initiator Id", initiatorIdDisplayingList, initiatorId, nextBtnLink, previousLink);
+			clearInitiatorIdTxtFld();
+			Thread.sleep(5000);
+			waitForVisibiltyOfListOfElements(listOfRecords);
 			
 			searchBydeviceStatus(deviceStatus);
+			Thread.sleep(5000);
+			waitTillElementIsVisible(firstRow);
 			if (verifyData()) 
 			{
 				logger.info("There is no Device with the Entity Type "+deviceStatus);
 				return;
 			}
-			verifySearch(deviceStatusDisplaying, deviceStatus, "Device Status");
+			waitForVisibiltyOfListOfElements(listOfRecords);
+			verifySearch("Device Status", deviceStatusDisplayingList, deviceStatus, nextBtnLink, previousLink);
+			clearDeviceStatusFilter();
+			Thread.sleep(5000);
+			waitForVisibiltyOfListOfElements(listOfRecords);
 			
 			
 			verifyCount();
 			
 			downloadReport(deviceDownloadBtn);
 			
-			
-			
-			
 		}
-		
-		
-		
+		Thread.sleep(5000);
 	}
 	
 }

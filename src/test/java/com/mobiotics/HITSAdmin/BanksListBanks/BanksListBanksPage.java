@@ -203,11 +203,15 @@ public class BanksListBanksPage extends BasePage{
 		String bankName = DemoExcelLibrary3.getexcelData("hits admin data", 1, 6, path);
 		String bankId = DemoExcelLibrary3.getexcelData("hits admin data", 1, 7, path);
 		addBank(bankId, bankName, status);
+		Thread.sleep(4000);
 		verifyAddedBank(bankId);
+		Thread.sleep(4000);
 		changeStatus(bankId);
+		Thread.sleep(4000);
 		searchBankByBankName(bankName);
+		Thread.sleep(4000);
 		searchBankByStatus(status);
-		
+		Thread.sleep(5000);
 		
 	}
 	

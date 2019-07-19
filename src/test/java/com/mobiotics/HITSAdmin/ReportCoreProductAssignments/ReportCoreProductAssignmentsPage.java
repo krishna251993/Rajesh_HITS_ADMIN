@@ -21,7 +21,7 @@ public class ReportCoreProductAssignmentsPage extends ReportUtilityClass{
 
 	static final Logger logger = Logger.getLogger(ReportCoreProductAssignmentsPage.class);
 
-	private static String fromDateXp1 = "/html/body/div[2]/div[1]/div[2]/div/div/div[1]/div[2]/table/tbody/tr[";
+	private static String fromDateXp1 = "//div[@data-name='start']//table/tbody/tr[";
 	private static String fromDateXp2 = "]/td[";
 	private String path = System.getProperty("user.dir")+"\\excelFiles\\tsetData.xls";
 	
@@ -57,6 +57,9 @@ public class ReportCoreProductAssignmentsPage extends ReportUtilityClass{
 	@FindBy(xpath = "//button[text()='Next']")
 	private WebElement nextBtnLink;
 	
+	@FindBy(xpath = "//button[text()='Prev']")
+	private WebElement previousLink;
+	
 	@FindBy(xpath = "//table[@class='table table-striped']/tbody/tr")
 	private List<WebElement> listOfRecords;
 	
@@ -84,14 +87,26 @@ public class ReportCoreProductAssignmentsPage extends ReportUtilityClass{
 	@FindBy(xpath = "//table[@class='table table-striped']/tbody/tr[1]/td[2]")
 	private WebElement entityIdDisplaying;
 	
+	@FindBy(xpath = "//table[@class='table table-striped']/tbody/tr/td[2]")
+	private List<WebElement> entityIdDisplayingList;
+	
 	@FindBy(xpath = "//table[@class='table table-striped']/tbody/tr[1]/td[last()-1]")
 	private WebElement jobIdDisplaying;
+	
+	@FindBy(xpath = "//table[@class='table table-striped']/tbody/tr/td[last()-1]")
+	private List<WebElement> jobIdDisplayingList;
 	
 	@FindBy(xpath = "//table[@class='table table-striped']/tbody/tr[1]/td[3]")
 	private WebElement entityTypeDisplaying;
 	
+	@FindBy(xpath = "//table[@class='table table-striped']/tbody/tr/td[3]")
+	private List<WebElement> entityTypeDisplayingList;
+	
 	@FindBy(xpath = "//table[@class='table table-striped']/tbody/tr[1]/td[last()-2]")
 	private WebElement purposeDisplaying;
+	
+	@FindBy(xpath = "//table[@class='table table-striped']/tbody/tr/td[last()-2]")
+	private List<WebElement> purposeDisplayingList;
 	
 	@FindBy(xpath = "//button[contains(text(), 'Report Download')]")
 	private WebElement reportDownloadBtn;
@@ -122,21 +137,75 @@ public class ReportCoreProductAssignmentsPage extends ReportUtilityClass{
 	{
 		searchByTextFilter(entityIdTxtFld, entityIdGoBtn, entityId);
 	}
+	public void clearEntityIdFilter()
+	{
+		clearTextFilter(entityIdTxtFld, entityIdGoBtn);
+	}
 	
-	public void searchByJobId(String jobId)
+	
+	public void searchByJobId(String jobId) throws InterruptedException
 	{
 		searchByTextFilter(jobIdTxtFld, jobIdGoBtn, jobId);
+		Thread.sleep(2000);
+		waitTillElementIsVisible(firstRow);
+		if (verifyData()) 
+		{
+			logger.info("There is no Product assignment and removal for the Job Id "+jobId);
+			return;
+		}
+		waitForVisibiltyOfListOfElements(listOfRecords);
+		verifySearch("Job Id", jobIdDisplayingList, jobId, nextBtnLink, previousLink);
+		clearJobIdFilter();
+		waitForVisibiltyOfListOfElements(listOfRecords);
+	}
+	public void clearJobIdFilter()
+	{
+		clearTextFilter(jobIdTxtFld, jobIdGoBtn);
 	}
 	
-	public void searchByEntityType(String entityType)
+	
+	public void searchByEntityType(String entityType) throws InterruptedException
 	{
 		selectElement(entityTypeList, entityType);
+		Thread.sleep(2000);
+		waitTillElementIsVisible(firstRow);
+		if (verifyData()) 
+		{
+			logger.info("There is no Product assignment and removal for the Entity Type "+entityType);
+			return;
+		}
+		waitForVisibiltyOfListOfElements(listOfRecords);
+		verifySearch("Entity Type", entityTypeDisplayingList, entityType, nextBtnLink, previousLink);
+		clearByEntityTypeFilter();
+		Thread.sleep(2000);
+		waitForVisibiltyOfListOfElements(listOfRecords);
+	}
+	public void clearByEntityTypeFilter()
+	{
+		selectElement(entityTypeList, "ALL");
 	}
 	
-	public void searchByPurpose(String purpose)
+	
+	public void searchByPurpose(String purpose) throws InterruptedException
 	{
 		selectElement(purposeList, purpose);
+		Thread.sleep(2000);
+		waitTillElementIsVisible(firstRow);
+		if (verifyData()) 
+		{
+			logger.info("There is no Product assignment and removal for the Purpose "+purpose);
+			return;
+		}
+		waitForVisibiltyOfListOfElements(listOfRecords);
+		verifySearch("Purpose", purposeDisplayingList, purpose, nextBtnLink, previousLink);
+		clearPurposeFilter();
+		waitForVisibiltyOfListOfElements(listOfRecords);
 	}
+	public void clearPurposeFilter()
+	{
+		selectElement(purposeList, "ALL");
+	}
+	
 	
 	public boolean verifyData()
 	{
@@ -150,12 +219,30 @@ public class ReportCoreProductAssignmentsPage extends ReportUtilityClass{
 		return false;
 	}
 	
-	public void verifySearch(WebElement elementDisplaying, String enteredData, String filterName)
+	
+	public void verifySearch(String filterName, List<WebElement> elementList, String dataExp, WebElement nextLink, WebElement previousLink) throws InterruptedException
 	{
-		logger.info(filterName+" entered is: "+enteredData);
-		logger.info(filterName+" is displaying is "+elementDisplaying.getText());
-		Assert.assertEquals(elementDisplaying.getText(), enteredData, filterName+" entered and "+filterName+" is displaying are not same.");
+		Thread.sleep(2000);
+		int noOfElements = countNoOfRecords(elementList, nextLink, previousLink);
+		logger.info("Number of records present for this "+filterName+" are: "+noOfElements);
+		int verifyRowNo = verifyDataDusplaying(elementList, dataExp, nextLink, previousLink);
+		
+		if(noOfElements != verifyRowNo)
+		{
+			logger.info("========================================================");
+			logger.info("Functional Test Case for "+  filterName +" filter is failed");
+			logger.info(filterName + " is displaying wrong in Row Number "+verifyRowNo);
+			logger.info("========================================================");
+			Assert.assertTrue(false);
+		}
+		else
+		{
+			logger.info("========================================================");
+			logger.info("Functional test case for "+filterName+ " filter test case is passed.");
+			logger.info("========================================================");
+		}
 	}
+	
 	
 	public void testReportCoreListSuspensions() throws InterruptedException
 	{
@@ -172,45 +259,30 @@ public class ReportCoreProductAssignmentsPage extends ReportUtilityClass{
 			String entityId = DemoExcelLibrary3.getexcelData("hits admin data", 1, 13, path);
 			searchByEntityId(entityId);
 			Thread.sleep(4000);
+			waitTillElementIsVisible(firstRow);
 			if (verifyData()) 
 			{
 				logger.info("There is no Product assignment and removal for the Entity Id "+entityId);
 				return;
 			}
-			verifySearch(entityIdDisplaying, entityId, "Entity Id");
 			
 			String jobId = jobIdDisplaying.getText();
 			String entityType = entityTypeDisplaying.getText();
 			String purpose = purposeDisplaying.getText();
 			
+			waitForVisibiltyOfListOfElements(listOfRecords);
+			verifySearch("Entity Id", entityIdDisplayingList, entityId, nextBtnLink, previousLink);
+			clearEntityIdFilter();
+			waitForVisibiltyOfListOfElements(listOfRecords);
+			
+	
 			searchByJobId(jobId);
-			Thread.sleep(2000);
-			if (verifyData()) 
-			{
-				logger.info("There is no Product assignment and removal for the Job Id "+jobId);
-				return;
-			}
-			verifySearch(jobIdDisplaying, jobId, "Job Id");
 			
 			searchByEntityType(entityType);
-			Thread.sleep(2000);
-			if (verifyData()) 
-			{
-				logger.info("There is no Product assignment and removal for the Entity Type "+entityType);
-				return;
-			}
-			verifySearch(entityTypeDisplaying, entityType, "Entity Type");
 			
 			searchByPurpose(purpose);
-			Thread.sleep(2000);
-			if (verifyData()) 
-			{
-				logger.info("There is no Product assignment and removal for the Purpose "+purpose);
-				return;
-			}
-			verifySearch(purposeDisplaying, purpose, "Purpose");
 			
 			downloadReport(reportDownloadBtn);
-				
+			Thread.sleep(5000);	
 		}
 }

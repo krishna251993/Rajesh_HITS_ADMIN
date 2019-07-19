@@ -29,9 +29,6 @@ public class Property {
 		return value;
 	}
 	
-	public static void action_Move_To_Element(WebDriver driver,WebElement element) {
-		Actions action=new Actions(driver);
-		action.moveToElement(element).perform();
-	}
+	
 
 }

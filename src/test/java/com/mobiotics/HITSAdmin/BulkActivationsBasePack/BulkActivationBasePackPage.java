@@ -87,6 +87,7 @@ public class BulkActivationBasePackPage extends BasePage{
 	{
 		verifyPage();
 		uploadBulkFile();
+		Thread.sleep(5000);
 	}
 	
 

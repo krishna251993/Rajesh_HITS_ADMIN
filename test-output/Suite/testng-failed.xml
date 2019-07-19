@@ -1,57 +1,233 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Suite]">
+  <listeners>
+    <listener class-name="com.mobiotics.HITSAdmin.utilities.Reporting"/>
+  </listeners>
   <test thread-count="5" name="Test(failed)">
     <classes>
+      <class name="com.mobiotics.HITSAdmin.tstCases.TC_Bulk_Finance_PayBills_15">
+        <methods>
+          <include name="bulkFinancePayBillsTestMethod"/>
+          <include name="initApplication"/>
+        </methods>
+      </class> <!-- com.mobiotics.HITSAdmin.tstCases.TC_Bulk_Finance_PayBills_15 -->
+      <class name="com.mobiotics.HITSAdmin.tstCases.TC_Report_Finance_PayForBox_26">
+        <methods>
+          <include name="reportFinancePayForBoxTestMethod"/>
+          <include name="initApplication"/>
+        </methods>
+      </class> <!-- com.mobiotics.HITSAdmin.tstCases.TC_Report_Finance_PayForBox_26 -->
+      <class name="com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO_01">
+        <methods>
+          <include name="testOperatorsLCOMethod"/>
+          <include name="initApplication"/>
+        </methods>
+      </class> <!-- com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO_01 -->
+      <class name="com.mobiotics.HITSAdmin.tstCases.TC_Bulk_Customer_ChangeTypeAndClass_14">
+        <methods>
+          <include name="initApplication"/>
+          <include name="bulkCustomerChangeTypeAndClassMethod"/>
+        </methods>
+      </class> <!-- com.mobiotics.HITSAdmin.tstCases.TC_Bulk_Customer_ChangeTypeAndClass_14 -->
+      <class name="com.mobiotics.HITSAdmin.tstCases.TC_MessageListMessage_30">
+        <methods>
+          <include name="initApplication"/>
+          <include name="testListMessageMethod"/>
+        </methods>
+      </class> <!-- com.mobiotics.HITSAdmin.tstCases.TC_MessageListMessage_30 -->
+      <class name="com.mobiotics.HITSAdmin.tstCases.TC_Report_Core_ListSuspension_23">
+        <methods>
+          <include name="reportCoreListSuspensionTestMethod"/>
+          <include name="initApplication"/>
+        </methods>
+      </class> <!-- com.mobiotics.HITSAdmin.tstCases.TC_Report_Core_ListSuspension_23 -->
       <class name="com.mobiotics.HITSAdmin.tstCases.TC_SetDueDate_31">
         <methods>
           <include name="initApplication"/>
-          <include name="shutDown"/>
           <include name="testSetDueDateMethod"/>
         </methods>
       </class> <!-- com.mobiotics.HITSAdmin.tstCases.TC_SetDueDate_31 -->
-      <class name="com.mobiotics.HITSAdmin.tstCases.TC_Maintenance">
+      <class name="com.mobiotics.HITSAdmin.tstCases.TC_OperatorsDPO_03">
         <methods>
-          <include name="maintenanceTestMethod"/>
+          <include name="testOperatorsDPOMethod"/>
           <include name="initApplication"/>
-          <include name="shutDown"/>
         </methods>
-      </class> <!-- com.mobiotics.HITSAdmin.tstCases.TC_Maintenance -->
+      </class> <!-- com.mobiotics.HITSAdmin.tstCases.TC_OperatorsDPO_03 -->
+      <class name="com.mobiotics.HITSAdmin.tstCases.TC_Bullk_Adjustment_Debit_18">
+        <methods>
+          <include name="bulkAdjustmentDebitMethod"/>
+          <include name="initApplication"/>
+        </methods>
+      </class> <!-- com.mobiotics.HITSAdmin.tstCases.TC_Bullk_Adjustment_Debit_18 -->
       <class name="com.mobiotics.HITSAdmin.tstCases.TC_MessageAddScroll_31">
         <methods>
           <include name="testAddScrollMethod"/>
           <include name="initApplication"/>
-          <include name="shutDown"/>
         </methods>
       </class> <!-- com.mobiotics.HITSAdmin.tstCases.TC_MessageAddScroll_31 -->
+      <class name="com.mobiotics.HITSAdmin.tstCases.TC_Report_Core_ListCustomer_19">
+        <methods>
+          <include name="initApplication"/>
+          <include name="reportCoreListCustomerTestMethod"/>
+        </methods>
+      </class> <!-- com.mobiotics.HITSAdmin.tstCases.TC_Report_Core_ListCustomer_19 -->
+      <class name="com.mobiotics.HITSAdmin.tstCases.TC_Bulk_Hardware_HardwareReplacement_10">
+        <methods>
+          <include name="initApplication"/>
+          <include name="testBulkHardwareRepacementMethod"/>
+        </methods>
+      </class> <!-- com.mobiotics.HITSAdmin.tstCases.TC_Bulk_Hardware_HardwareReplacement_10 -->
+      <class name="com.mobiotics.HITSAdmin.tstCases.TC_Bulk_Product_Remove_13">
+        <methods>
+          <include name="bulkProductRemovetestMethod"/>
+          <include name="initApplication"/>
+        </methods>
+      </class> <!-- com.mobiotics.HITSAdmin.tstCases.TC_Bulk_Product_Remove_13 -->
+      <class name="com.mobiotics.HITSAdmin.tstCases.TC_Bulk_Hardware_Retrack_06">
+        <methods>
+          <include name="testBulkHardwareRetrackMethod"/>
+          <include name="initApplication"/>
+        </methods>
+      </class> <!-- com.mobiotics.HITSAdmin.tstCases.TC_Bulk_Hardware_Retrack_06 -->
+      <class name="com.mobiotics.HITSAdmin.tstCases.TC_Maintenance">
+        <methods>
+          <include name="maintenanceTestMethod"/>
+          <include name="initApplication"/>
+        </methods>
+      </class> <!-- com.mobiotics.HITSAdmin.tstCases.TC_Maintenance -->
+      <class name="com.mobiotics.HITSAdmin.tstCases.TC_Report_Core_JobReport_24">
+        <methods>
+          <include name="initApplication"/>
+          <include name="reportCoreJobReportTestMethod"/>
+        </methods>
+      </class> <!-- com.mobiotics.HITSAdmin.tstCases.TC_Report_Core_JobReport_24 -->
+      <class name="com.mobiotics.HITSAdmin.tstCases.TC_Bulk_Adjustment_Credit_17">
+        <methods>
+          <include name="bulkAdjustmentCreditMethod"/>
+          <include name="initApplication"/>
+        </methods>
+      </class> <!-- com.mobiotics.HITSAdmin.tstCases.TC_Bulk_Adjustment_Credit_17 -->
+      <class name="com.mobiotics.HITSAdmin.tstCases.TC_Report_RefundReport_29">
+        <methods>
+          <include name="reportRefundReportTestMethod"/>
+          <include name="initApplication"/>
+        </methods>
+      </class> <!-- com.mobiotics.HITSAdmin.tstCases.TC_Report_RefundReport_29 -->
+      <class name="com.mobiotics.HITSAdmin.tstCases.TC_Report_Core_ListActivations_22">
+        <methods>
+          <include name="reportCoreActivationsTestMethod"/>
+          <include name="initApplication"/>
+        </methods>
+      </class> <!-- com.mobiotics.HITSAdmin.tstCases.TC_Report_Core_ListActivations_22 -->
+      <class name="com.mobiotics.HITSAdmin.tstCases.TC_Bulk_Hardware_Disconnect_08">
+        <methods>
+          <include name="testBulkHardwareDisconnectMethod"/>
+          <include name="initApplication"/>
+        </methods>
+      </class> <!-- com.mobiotics.HITSAdmin.tstCases.TC_Bulk_Hardware_Disconnect_08 -->
+      <class name="com.mobiotics.HITSAdmin.tstCases.TC_Report_Finance_PayBills_28">
+        <methods>
+          <include name="reportFinancePayBillsTestMethod"/>
+          <include name="initApplication"/>
+        </methods>
+      </class> <!-- com.mobiotics.HITSAdmin.tstCases.TC_Report_Finance_PayBills_28 -->
+      <class name="com.mobiotics.HITSAdmin.tstCases.TC_Bulk_Hardware_SendOSD_11">
+        <methods>
+          <include name="testBulkHardwareSendOSDMethod"/>
+          <include name="initApplication"/>
+        </methods>
+      </class> <!-- com.mobiotics.HITSAdmin.tstCases.TC_Bulk_Hardware_SendOSD_11 -->
+      <class name="com.mobiotics.HITSAdmin.tstCases.TC_Report_Core_ListDevices_20">
+        <methods>
+          <include name="reportCoreListDevicesTestMethod"/>
+          <include name="initApplication"/>
+        </methods>
+      </class> <!-- com.mobiotics.HITSAdmin.tstCases.TC_Report_Core_ListDevices_20 -->
+      <class name="com.mobiotics.HITSAdmin.tstCases.TC_Bulk_Finance_FinancialAccounts_16">
+        <methods>
+          <include name="initApplication"/>
+          <include name="bulkFinanceFinancialAccountsTestMethod"/>
+        </methods>
+      </class> <!-- com.mobiotics.HITSAdmin.tstCases.TC_Bulk_Finance_FinancialAccounts_16 -->
+      <class name="com.mobiotics.HITSAdmin.tstCases.TC_Report_Core_ListConnections_21">
+        <methods>
+          <include name="reportCoreListConnectionsTestMethod"/>
+          <include name="initApplication"/>
+        </methods>
+      </class> <!-- com.mobiotics.HITSAdmin.tstCases.TC_Report_Core_ListConnections_21 -->
+      <class name="com.mobiotics.HITSAdmin.tstCases.TC_Bulk_Product_Assign_12">
+        <methods>
+          <include name="testBulkProductAssignMethod"/>
+          <include name="initApplication"/>
+        </methods>
+      </class> <!-- com.mobiotics.HITSAdmin.tstCases.TC_Bulk_Product_Assign_12 -->
+      <class name="com.mobiotics.HITSAdmin.tstCases.TC_Report_Finance_GSTReport_27">
+        <methods>
+          <include name="reportFinanceGSTReportTestMethod"/>
+          <include name="initApplication"/>
+        </methods>
+      </class> <!-- com.mobiotics.HITSAdmin.tstCases.TC_Report_Finance_GSTReport_27 -->
+      <class name="com.mobiotics.HITSAdmin.tstCases.TC_Report_Core_Product_Assignment_24">
+        <methods>
+          <include name="initApplication"/>
+          <include name="reportCoreProductAssignmentTestMethod"/>
+        </methods>
+      </class> <!-- com.mobiotics.HITSAdmin.tstCases.TC_Report_Core_Product_Assignment_24 -->
+      <class name="com.mobiotics.HITSAdmin.tstCases.TC_SubuserModifySubuser_33">
+        <methods>
+          <include name="testModifySubuserTest"/>
+          <include name="initApplication"/>
+        </methods>
+      </class> <!-- com.mobiotics.HITSAdmin.tstCases.TC_SubuserModifySubuser_33 -->
       <class name="com.mobiotics.HITSAdmin.tstCases.TC_BanksListBanks_34">
         <methods>
           <include name="testListBanksMethod"/>
           <include name="initApplication"/>
-          <include name="shutDown"/>
         </methods>
       </class> <!-- com.mobiotics.HITSAdmin.tstCases.TC_BanksListBanks_34 -->
       <class name="com.mobiotics.HITSAdmin.tstCases.TC_SubuserAddSubuser_32">
         <methods>
           <include name="testAddSubuserMethod"/>
           <include name="initApplication"/>
-          <include name="shutDown"/>
         </methods>
       </class> <!-- com.mobiotics.HITSAdmin.tstCases.TC_SubuserAddSubuser_32 -->
-      <class name="com.mobiotics.HITSAdmin.tstCases.TC_MessageListMessage_30">
+      <class name="com.mobiotics.HITSAdmin.tstCases.TC_Report_Finance_ListPayments_25">
+        <methods>
+          <include name="reportFinanceListPaymentsTestMethod"/>
+          <include name="initApplication"/>
+        </methods>
+      </class> <!-- com.mobiotics.HITSAdmin.tstCases.TC_Report_Finance_ListPayments_25 -->
+      <class name="com.mobiotics.HITSAdmin.tstCases.TC_Bulk_Hardware_CancelProduct_09">
         <methods>
           <include name="initApplication"/>
-          <include name="shutDown"/>
-          <include name="testListMessageMethod"/>
+          <include name="testBulkHardwareCancelProductMethod"/>
         </methods>
-      </class> <!-- com.mobiotics.HITSAdmin.tstCases.TC_MessageListMessage_30 -->
-      <class name="com.mobiotics.HITSAdmin.tstCases.TC_SubuserModifySubuser_33">
+      </class> <!-- com.mobiotics.HITSAdmin.tstCases.TC_Bulk_Hardware_CancelProduct_09 -->
+      <class name="com.mobiotics.HITSAdmin.tstCases.TC_OperatorsMSO_02">
         <methods>
-          <include name="testModifySubuserTest"/>
+          <include name="operatorsTestMethod"/>
           <include name="initApplication"/>
-          <include name="shutDown"/>
         </methods>
-      </class> <!-- com.mobiotics.HITSAdmin.tstCases.TC_SubuserModifySubuser_33 -->
+      </class> <!-- com.mobiotics.HITSAdmin.tstCases.TC_OperatorsMSO_02 -->
+      <class name="com.mobiotics.HITSAdmin.tstCases.TC_Bulk_Activation_BasePack_04">
+        <methods>
+          <include name="initApplication"/>
+          <include name="testBulkAddBasePack"/>
+        </methods>
+      </class> <!-- com.mobiotics.HITSAdmin.tstCases.TC_Bulk_Activation_BasePack_04 -->
+      <class name="com.mobiotics.HITSAdmin.tstCases.TC_Bulk_Hardware_Reconnect_07">
+        <methods>
+          <include name="testBulkHardwareRconnectMethod"/>
+          <include name="initApplication"/>
+        </methods>
+      </class> <!-- com.mobiotics.HITSAdmin.tstCases.TC_Bulk_Hardware_Reconnect_07 -->
+      <class name="com.mobiotics.HITSAdmin.tstCases.TC_Bulk_Activation_CreateSubscriber_05">
+        <methods>
+          <include name="testBulkActivationCreateSubscriber"/>
+          <include name="initApplication"/>
+        </methods>
+      </class> <!-- com.mobiotics.HITSAdmin.tstCases.TC_Bulk_Activation_CreateSubscriber_05 -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

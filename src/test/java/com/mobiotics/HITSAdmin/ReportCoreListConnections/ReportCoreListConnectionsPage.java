@@ -26,7 +26,7 @@ public class ReportCoreListConnectionsPage extends ReportUtilityClass{
 
 	static final Logger logger = Logger.getLogger(ReportCoreListConnectionsPage.class);
 
-	private static String fromDateXp1 = "/html/body/div[2]/div[1]/div[2]/div[2]/div/div[1]/div[2]/table/tbody/tr[";
+	private static String fromDateXp1 = "//div[@data-name='start']//table/tbody/tr[";
 	private static String fromDateXp2 = "]/td[";
 	private String path = System.getProperty("user.dir")+"\\excelFiles\\tsetData.xls";
 	
@@ -35,25 +35,25 @@ public class ReportCoreListConnectionsPage extends ReportUtilityClass{
 	@FindBy(xpath = "//h1[contains(text(), 'Connection List')]")
 	private WebElement pageTitleTxt;
 	
-	@FindBy(xpath = "(//i[@class='glyphicon glyphicon-calendar'])[1]")
+	@FindBy(xpath = "//div[@data-name='start']//i[@class='glyphicon glyphicon-calendar']")
 	private WebElement fromDateCal;
 	
-	@FindBy(xpath = "(//i[@class='glyphicon glyphicon-chevron-left'])[2]")
+	@FindBy(xpath = "//div[@class='form-inline']//div[@data-name='start']//th[@class='year']//a[@class='previous']/i")
 	private WebElement previousShftYearFromDate;
 	
-	@FindBy(xpath = "(//i[@class='glyphicon glyphicon-chevron-right'])[2]")
+	@FindBy(xpath = "//div[@class='form-inline']//div[@data-name='start']//th[@class='year']//a[@class='next']/i")
 	private WebElement nextShftYearFromDate;
 	
-	@FindBy(xpath = "(//a[@class='previous']/following-sibling::span)[2]")
+	@FindBy(xpath = "//div[@data-name='start']//th[@class='year']/span")
 	private WebElement fromDateYear;
 	
-	@FindBy(xpath = "(//i[@class='glyphicon glyphicon-chevron-left'])[1]")
+	@FindBy(xpath = "//div[@class='form-inline']//div[@data-name='start']//th[@class='month']//a[@class='previous']/i")
 	private WebElement previousShftMonthFromDate;
 	
-	@FindBy(xpath = "(//i[@class='glyphicon glyphicon-chevron-right'])[1]")
+	@FindBy(xpath = "//div[@class='form-inline']//div[@data-name='start']//th[@class='month']//a[@class='next']/i")
 	private WebElement nextShftMonthFromDate;
 	
-	@FindBy(xpath = "(//a[@class='previous']/following-sibling::span)[1]")
+	@FindBy(xpath = "//div[@data-name='start']//th[@class='month']/span")
 	private WebElement fromDateMonth;
 	
 	@FindBy(id = "refresh")
@@ -61,6 +61,9 @@ public class ReportCoreListConnectionsPage extends ReportUtilityClass{
 	
 	@FindBy(xpath = "//button[text()='Next']")
 	private WebElement nextBtnLink;
+	
+	@FindBy(xpath = "//button[text()='Prev']")
+	private WebElement previousLink;
 	
 	@FindBy(xpath = "//div[text()='Count : ']/span")
 	private WebElement countValueNumber;
@@ -95,14 +98,26 @@ public class ReportCoreListConnectionsPage extends ReportUtilityClass{
 	@FindBy(xpath = "//table[@class='table table-striped']/tbody/tr[1]/td[4]")
 	private WebElement customerIdDisplaying;
 	
+	@FindBy(xpath = "//table[@class='table table-striped']/tbody/tr/td[4]")
+	private List<WebElement> customerIdDisplayingList;
+	
 	@FindBy(xpath = "//table[@class='table table-striped']/tbody/tr[1]/td[3]")
 	private WebElement productNameDisplaying;
+	
+	@FindBy(xpath = "//table[@class='table table-striped']/tbody/tr/td[3]")
+	private List<WebElement> productNameDisplayingList;
 	
 	@FindBy(xpath = "//table[@class='table table-striped']/tbody/tr[1]/td[last()-2]")
 	private WebElement connectionTypeDisplaying;
 	
+	@FindBy(xpath = "//table[@class='table table-striped']/tbody/tr/td[last()-2]")
+	private List<WebElement> connectionTypeDisplayingList;
+	
 	@FindBy(xpath = "//table[@class='table table-striped']/tbody/tr[1]/td[last()-1]")
 	private WebElement connectionStatusDisplaying;
+	
+	@FindBy(xpath = "//table[@class='table table-striped']/tbody/tr/td[last()-1]")
+	private List<WebElement> connectionStatusDisplayingList;
 	
 	@FindBy(xpath = "//button[contains(text(), 'Connection Download')]")
 	private WebElement connectionDownloadBtn;
@@ -130,40 +145,107 @@ public class ReportCoreListConnectionsPage extends ReportUtilityClass{
 		
 	}
 	
-	public void verifyCount()
+	public int verifyCount() throws InterruptedException
 	{
 		String countDisplayingNo = countValueNumber.getText();
 		logger.info("Count displaying: "+countDisplayingNo);
-		int noOfRecords = countNoOfRecords(listOfRecords, nextBtnLink);
-		logger.info("Number of records displaying are: "+noOfRecords);
+		int noOfRecords = countNoOfRecords(listOfRecords, nextBtnLink, previousLink);
+		logger.info("Number of records displaying are:  "+noOfRecords);
 		assertEquals(Integer.parseInt(countDisplayingNo), noOfRecords, "Count is displaying wrong number");
+		return noOfRecords;
 	}
 	
 	public void searchByCustomerId(String customerId)
 	{
 		searchByTextFilter(customerIdTxtFld, customerIdGoBtn, customerId);
 	}
+	public void clearCustomerIdFilter()
+	{
+		clearTextFilter(customerIdTxtFld, customerIdGoBtn);
+	}
 	
-	public void searchByProductName(String productName)
+	public void searchByProductName(String productName) throws InterruptedException
 	{
 		searchByTextFilter(productNameTxtFld, productNameGoBtn, productName);
+		Thread.sleep(5000);
+		waitTillElementIsVisible(firstRow);
+		if (verifyData()) 
+		{
+			logger.info("There is no Connection with the Product Name "+productName);
+			return;
+		}
+		waitForVisibiltyOfListOfElements(listOfRecords);
+		verifySearch("Product Name", productNameDisplayingList, productName, nextBtnLink, previousLink);
+		clearProductNameFilter();
+		waitForVisibiltyOfListOfElements(listOfRecords);
+	}
+	public void clearProductNameFilter()
+	{
+		clearTextFilter(productNameTxtFld, productNameGoBtn);
 	}
 	
-	public void searchByConnectionType(String connectionType)
+	public void searchByConnectionType(String connectionType) throws InterruptedException
 	{
 		selectElement(connectionTypeList, connectionType);
+		Thread.sleep(5000);
+		waitTillElementIsVisible(firstRow);
+		if (verifyData()) 
+		{
+			logger.info("There is no Connection of type "+connectionType);
+			return;
+		}
+		waitForVisibiltyOfListOfElements(listOfRecords);
+		verifySearch("Connection Type", connectionTypeDisplayingList, connectionType, nextBtnLink, previousLink);
+		clearConnectionTypeFilter();
+		Thread.sleep(5000);
+		waitForVisibiltyOfListOfElements(listOfRecords);
+	}
+	public void clearConnectionTypeFilter()
+	{
+		selectElement(connectionTypeList, "ALL");
 	}
 	
-	public void searchByconnectionStatus(String connectionStatus)
+	public void searchByconnectionStatus(String connectionStatus) throws InterruptedException
 	{
 		selectElement(connectionStatusList, connectionStatus);
+		Thread.sleep(5000);
+		waitTillElementIsVisible(firstRow);
+		if (verifyData()) 
+		{
+			logger.info("There is no Connection with the status "+connectionStatus);
+			return;
+		}
+		waitForVisibiltyOfListOfElements(listOfRecords);
+		verifySearch("Connection Status", connectionStatusDisplayingList, connectionStatus, nextBtnLink, previousLink);
+		clearconnectionStatus();
+		Thread.sleep(5000);
+		waitForVisibiltyOfListOfElements(listOfRecords);
+	}
+	public void clearconnectionStatus()
+	{
+		selectElement(connectionStatusList, "ALL");
 	}
 	
-	public void verifySearch(WebElement elementDisplaying, String enteredData, String filterName)
+	public void verifySearch(String filterName, List<WebElement> elementList, String dataExp, WebElement nextLink, WebElement previousLink) throws InterruptedException
 	{
-		logger.info(filterName+" entered is: "+enteredData);
-		logger.info(filterName+" is displaying is "+elementDisplaying.getText());
-		Assert.assertEquals(elementDisplaying.getText(), enteredData, filterName+" entered and "+filterName+" is displaying are not same.");
+		Thread.sleep(2000);
+		int noOfElements = verifyCount();
+		int verifyRowNo = verifyDataDusplaying(elementList, dataExp, nextLink, previousLink);
+		
+		if(noOfElements != verifyRowNo)
+		{
+			logger.info("========================================================");
+			logger.info("Functional Test Case for "+  filterName +" filter is failed");
+			logger.info(filterName + " is displaying wrong in Row Number "+verifyRowNo);
+			logger.info("========================================================");
+			Assert.assertTrue(false);
+		}
+		else
+		{
+			logger.info("========================================================");
+			logger.info("Functional test case for "+filterName+ " filter test case is passed.");
+			logger.info("========================================================");
+		}
 	}
 	
 	public boolean verifyData()
@@ -181,76 +263,44 @@ public class ReportCoreListConnectionsPage extends ReportUtilityClass{
 	public void testReportCoreListConnections() throws InterruptedException
 	{
 			verifyPage();
-			selectDates("01-04-2019");
+			selectDates("15-06-2019");
 			Thread.sleep(7000);
 			if(verifyData()) 
 			{
-				logger.info("Thre is no Connection details available in the selected table within the selected timeline");
+				logger.info("There is no Connection details available in the selected table within the selected timeline");
 				return;
 			}
 			//verifyCount();//bug-------
-			String customerId = DemoExcelLibrary3.getexcelData("hits admin data", 1, 11, path);
+			String customerId = DemoExcelLibrary3.getexcelData("hits admin data", 1, 10, path);
 			searchByCustomerId(customerId);
+			Thread.sleep(5000);
 			waitTillElementIsVisible(firstRow);
 			if (verifyData()) 
 			{
 				return;
 			}
-			verifySearch(customerIdDisplaying, customerId, "Customer Id");
 			
 			String productName = productNameDisplaying.getText();
 			String connectionType = connectionTypeDisplaying.getText();
 			String connectionStatus = connectionStatusDisplaying.getText();
 			
+			waitForVisibiltyOfListOfElements(customerIdDisplayingList);
+			verifySearch("Customer Id", customerIdDisplayingList, customerId, nextBtnLink, previousLink);
+			clearCustomerIdFilter();
+			Thread.sleep(5000);
+			waitForVisibiltyOfListOfElements(listOfRecords);
 			
 			searchByProductName(productName);
-			waitTillElementIsVisible(firstRow);
-			if (verifyData()) 
-			{
-				logger.info("There is no Connection with the Product Name "+productName);
-				return;
-			}
-			verifySearch(productNameDisplaying, productName, "Product Name");
 			
 			searchByConnectionType(connectionType);
-			waitTillElementIsVisible(firstRow);
-			if (verifyData()) 
-			{
-				logger.info("There is no Connection of type "+connectionType);
-				return;
-			}
-			verifySearch(connectionTypeDisplaying, connectionType, "Connection Type");
 			
 			searchByconnectionStatus(connectionStatus);
-			waitTillElementIsVisible(firstRow);
-			if (verifyData()) 
-			{
-				logger.info("There is no Connection with the status "+connectionStatus);
-				return;
-			}
-			verifySearch(connectionStatusDisplaying, connectionStatus, "Connection Status");
+			
 			
 			//verifyCount();//bug--------
 			
 			downloadReport(connectionDownloadBtn);
-			
-			
-			
-			
+			Thread.sleep(5000);	
 		}
 		
-		
-		
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
 }

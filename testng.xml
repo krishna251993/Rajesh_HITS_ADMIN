@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Suite">
+
+	<listeners>
+		<listener class-name="com.mobiotics.HITSAdmin.utilities.Reporting" />
+	</listeners>
+
   <test thread-count="5" name="Test">
     <classes>
      <class name="com.mobiotics.HITSAdmin.tstCases.TC_OperatorsLCO_01"/>
@@ -25,8 +30,9 @@
      <class name="com.mobiotics.HITSAdmin.tstCases.TC_Report_Core_ListCustomer_19"/>
      <class name="com.mobiotics.HITSAdmin.tstCases.TC_Report_Core_ListDevices_20"/>
      <class name="com.mobiotics.HITSAdmin.tstCases.TC_Report_Core_ListConnections_21"/>
-     <class name="com.mobiotics.HITSAdmin.tstCases.TC_Report_Core_ListActivations_22"/>
      <class name="com.mobiotics.HITSAdmin.tstCases.TC_Report_Core_ListSuspension_23"/>
+     <class name="com.mobiotics.HITSAdmin.tstCases.TC_Report_Core_ListActivations_22"/>
+     
      <class name="com.mobiotics.HITSAdmin.tstCases.TC_Report_Core_Product_Assignment_24"/>
      <class name="com.mobiotics.HITSAdmin.tstCases.TC_Report_Core_JobReport_24"/>
      <class name="com.mobiotics.HITSAdmin.tstCases.TC_Report_Finance_ListPayments_25"/>

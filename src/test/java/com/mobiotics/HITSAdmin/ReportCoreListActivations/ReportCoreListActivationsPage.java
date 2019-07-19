@@ -23,8 +23,12 @@ public class ReportCoreListActivationsPage extends ReportUtilityClass{
 
 	static final Logger logger = Logger.getLogger(ReportCoreListActivationsPage.class);
 
-	private static String fromDateXp1 = "/html/body/div[3]/div[1]/div[2]/div[3]/div/div[1]/div[2]/table/tbody/tr[";
+	private static String fromDateXp1 = "//div[@data-name='start']//table/tbody/tr[";
 	private static String fromDateXp2 = "]/td[";
+
+	private static String toDateXp1 = "//div[@data-name='end']//table/tbody/tr[";
+	private static String toDateXp2 = "]/td[";
+
 	private String path = System.getProperty("user.dir")+"\\excelFiles\\tsetData.xls";
 	
 	private DateHelper dh = new DateHelper();
@@ -63,7 +67,10 @@ public class ReportCoreListActivationsPage extends ReportUtilityClass{
 	private WebElement goDateBtn;
 	
 	@FindBy(xpath = "//button[text()='Next']")
-	private WebElement nextBtnLink;
+	private WebElement nextLink;
+	
+	@FindBy(xpath = "//button[text()='Prev']")
+	private WebElement previousLink;
 	
 	@FindBy(xpath = "//div[text()='Count : ']/span")
 	private WebElement countValueNumber;
@@ -104,20 +111,38 @@ public class ReportCoreListActivationsPage extends ReportUtilityClass{
 	@FindBy(xpath = "//table[@class='table table-striped']/tbody/tr[1]/td[1]")
 	private WebElement customerIdDisplaying;
 	
+	@FindBy(xpath = "//table[@class='table table-striped']/tbody/tr/td[1]")
+	private List<WebElement> customerIdDisplayingList;
+	
 	@FindBy(xpath = "//table[@class='table table-striped']/tbody/tr[1]/td[2]")
 	private WebElement productIdDisplaying;
+	
+	@FindBy(xpath = "//table[@class='table table-striped']/tbody/tr/td[2]")
+	private List<WebElement> productIdDisplayingList;
 	
 	@FindBy(xpath = "//table[@class='table table-striped']/tbody/tr[1]/td[3]")
 	private WebElement productNameDisplaying;
 	
+	@FindBy(xpath = "//table[@class='table table-striped']/tbody/tr/td[3]")
+	private List<WebElement> productNameDisplayingList;
+	
 	@FindBy(xpath = "//table[@class='table table-striped']/tbody/tr[1]/td[4]")
 	private WebElement activationStatusDisplaying;
+	
+	@FindBy(xpath = "//table[@class='table table-striped']/tbody/tr/td[4]")
+	private List<WebElement> activationStatusDisplayingList;
 	
 	@FindBy(xpath = "//table[@class='table table-striped']/tbody/tr[1]/td[5]")
 	private WebElement activationTypeDisplaying;
 	
+	@FindBy(xpath = "//table[@class='table table-striped']/tbody/tr/td[5]")
+	private List<WebElement> activationTypeDisplayingList;
+	
 	@FindBy(xpath = "//table[@class='table table-striped']/tbody/tr[1]/td[last()-2]")
 	private WebElement initiatorDisplaying;
+	
+	@FindBy(xpath = "//table[@class='table table-striped']/tbody/tr/td[last()-2]")
+	private List<WebElement> initiatorDisplayingList;
 	
 	@FindBy(xpath = "//button[contains(text(), 'Activation Download')]")
 	private WebElement activationDownloadBtn;
@@ -158,6 +183,16 @@ public class ReportCoreListActivationsPage extends ReportUtilityClass{
 		return true;
 	}
 	
+	public int verifyCount() throws InterruptedException
+	{
+		String countDisplayingNo = countValueNumber.getText();
+		logger.info("Count displaying: "+countDisplayingNo);
+		int noOfRecords = countNoOfRecords(listOfRecords, nextLink, previousLink);
+		logger.info("Number of records displaying are:  "+noOfRecords);
+		assertEquals(Integer.parseInt(countDisplayingNo), noOfRecords, "Count is displaying wrong number");
+		return noOfRecords;
+	}
+	
 	public void selectTable(String tableNo)
 	{
 		selectElement(tableForData, tableNo);
@@ -178,44 +213,63 @@ public class ReportCoreListActivationsPage extends ReportUtilityClass{
 		
 	}
 	
-	public void verifyCount()
-	{
-		String countDisplayingNo = countValueNumber.getText();
-		logger.info("Count displaying: "+countDisplayingNo);
-		int noOfRecords = countNoOfRecords(listOfRecords, nextBtnLink);
-		logger.info("Number of records displaying are: "+noOfRecords);
-		assertEquals(Integer.parseInt(countDisplayingNo), noOfRecords, "Count is displaying wrong number");
-	}
 	
 	public void searchByCustomerId(String customerId)
 	{
 		searchByTextFilter(customerIdTxtFld, customerIdGoBtn, customerId);
+	}
+	public void clearCustomerIdFilter()
+	{
+		clearTextFilter(customerIdTxtFld, customerIdGoBtn);
 	}
 	
 	public void searchByProductId(String productId)
 	{
 		searchByTextFilter(productIdTxtFld, productIdGoBtn, productId);
 	}
+	public void clearProductIdFilter()
+	{
+		clearTextFilter(productIdTxtFld, productIdGoBtn);
+	}
+	
 	
 	public void searchByProductName(String productName)
 	{
 		searchByTextFilter(productNameTxtFld, productNameGoBtn, productName);
+	}
+	public void clearProductNameFilter()
+	{
+		clearTextFilter(productNameTxtFld, productNameGoBtn);
 	}
 	
 	public void searchByActivationStatus(String activationStatus)
 	{
 		selectElement(activationStatusList, activationStatus);
 	}
+	public void clearActivationStatusFilter()
+	{
+		selectElement(activationStatusList, "ALL");
+	}
 	
 	public void searchByActivationType(String activationType)
 	{
 		selectElement(activationTypeList, activationType);
+	}
+	public void clearActivationTypeFilter()
+	{
+		selectElement(activationTypeList, "ALL");
 	}
 	
 	public void searchByInitiator(String initiator)
 	{
 		selectElement(initiatorTypeList, initiator);
 	}
+	public void clearInitiatorFilter()
+	{
+		selectElement(initiatorTypeList, "ALL");
+	}
+	
+	
 	
 	public boolean verifyData()
 	{
@@ -229,11 +283,28 @@ public class ReportCoreListActivationsPage extends ReportUtilityClass{
 		return false;
 	}
 	
-	public void verifySearch(WebElement elementDisplaying, String enteredData, String filterName)
+	
+	
+	public void verifySearch(String filterName, List<WebElement> elementList, String dataExp, WebElement nextLink, WebElement previousLink) throws InterruptedException
 	{
-		logger.info(filterName+" entered is: "+enteredData);
-		logger.info(filterName+" is displaying is "+elementDisplaying.getText());
-		Assert.assertEquals(elementDisplaying.getText(), enteredData, filterName+" entered and "+filterName+" is displaying are not same.");
+		Thread.sleep(2000);
+		int noOfElements = verifyCount();
+		int verifyRowNo = verifyDataDusplaying(elementList, dataExp, nextLink, previousLink);
+		
+		if(noOfElements != verifyRowNo)
+		{
+			logger.info("========================================================");
+			logger.info("Functional Test Case for "+  filterName +" filter is failed");
+			logger.info(filterName + " is displaying wrong in Row Number "+verifyRowNo);
+			logger.info("========================================================");
+			Assert.assertTrue(false);
+		}
+		else
+		{
+			logger.info("========================================================");
+			logger.info("Functional test case for "+filterName+ " filter test case is passed.");
+			logger.info("========================================================");
+		}
 	}
 	
 	public void archiveDownloadReport()
@@ -261,20 +332,24 @@ public class ReportCoreListActivationsPage extends ReportUtilityClass{
 			Thread.sleep(5000);
 			selectDates("01-06-2019");
 			Thread.sleep(5000);
+			waitTillElementIsVisible(firstRow);
 			if(verifyData()) 
 			{
 				logger.info("Thre is no activations in the selected table within the selected timeline");
 				return;
 			}
+			waitForVisibiltyOfListOfElements(listOfRecords);
 			verifyCount();
+			
 			String customerId = DemoExcelLibrary3.getexcelData("hits admin data", 1, 11, path);
 			searchByCustomerId(customerId);
 			Thread.sleep(4000);
+			waitTillElementIsVisible(firstRow);
 			if (verifyData()) 
 			{
 				return;
 			}
-			verifySearch(customerIdDisplaying, customerId, "Customer Id");
+			verifySearch("Customer Id", customerIdDisplayingList, customerId, nextLink, previousLink);
 			
 			String productId = productIdDisplaying.getText();
 			String productName = productNameDisplaying.getText();
@@ -282,93 +357,91 @@ public class ReportCoreListActivationsPage extends ReportUtilityClass{
 			String activationType = activationTypeDisplaying.getText();
 			String initiator = initiatorDisplaying.getText();
 			
+			clearCustomerIdFilter();
+			Thread.sleep(3000);
+			waitForVisibiltyOfListOfElements(listOfRecords);
+			
 			searchByProductId(productId);
-			Thread.sleep(2000);
+			Thread.sleep(3000);
+			waitTillElementIsVisible(firstRow);
 			if (verifyData()) 
 			{
 				logger.info("There is no Activation for the Product Id "+productId);
 				return;
 			}
-			verifySearch(productIdDisplaying, productId, "Product Id");
+			waitForVisibiltyOfListOfElements(listOfRecords);
+			verifySearch("Product Id", productIdDisplayingList, productId, nextLink, previousLink);
+			clearProductIdFilter();
+			Thread.sleep(3000);
+			waitForVisibiltyOfListOfElements(listOfRecords);
 			
 			searchByProductName(productName);
 			Thread.sleep(2000);
+			waitTillElementIsVisible(firstRow);
 			if (verifyData()) 
 			{
 				logger.info("There is no Activation for the Product Name "+productName);
 				return;
 			}
-			verifySearch(productNameDisplaying, productName, "Product Name");
+			waitForVisibiltyOfListOfElements(listOfRecords);
+			verifySearch("Product Name", productNameDisplayingList, productName, nextLink, previousLink);
+			clearProductNameFilter();
+			Thread.sleep(3000);
+			waitForVisibiltyOfListOfElements(listOfRecords);
 			
 			searchByActivationStatus(activationStatus);
 			Thread.sleep(2000);
+			waitTillElementIsVisible(firstRow);
 			if (verifyData()) 
 			{
 				logger.info("There is no Activation with the Activation Status: "+activationStatus);
 				return;
 			}
-			verifySearch(activationStatusDisplaying, activationStatus, "Activation Status");
+			waitForVisibiltyOfListOfElements(listOfRecords);
+			verifySearch("Activation Status", activationStatusDisplayingList, activationStatus, nextLink, previousLink);
+			clearActivationStatusFilter();
+			Thread.sleep(3000);
+			waitForVisibiltyOfListOfElements(listOfRecords);
 			
 			searchByActivationType(activationType);
 			Thread.sleep(2000);
+			waitTillElementIsVisible(firstRow);
 			if (verifyData()) 
 			{
 				logger.info("There is no Activation for the Activation Type: "+activationType);
 				return;
 			}
-			verifySearch(activationTypeDisplaying, activationType, "Activation Type");
+			waitForVisibiltyOfListOfElements(listOfRecords);
+			verifySearch("Activation Type", activationTypeDisplayingList, activationType, nextLink, previousLink);
+			clearActivationTypeFilter();
+			Thread.sleep(3000);
+			waitForVisibiltyOfListOfElements(listOfRecords);
+			
 			
 			searchByInitiator(initiator);
 			Thread.sleep(2000);
+			waitTillElementIsVisible(firstRow);
 			if (verifyData()) 
 			{
 				logger.info("There is no Activation for the Initiator: "+initiator);
 				return;
 			}
-			verifySearch(initiatorDisplaying, initiator, "Initiator");
-			
+			waitForVisibiltyOfListOfElements(listOfRecords);
+			verifySearch("Initiator", initiatorDisplayingList, initiator, nextLink, previousLink);
+			clearInitiatorFilter();
+			Thread.sleep(3000);
+			waitForVisibiltyOfListOfElements(listOfRecords);
 			
 			verifyCount();
 			
 			downloadReport(activationDownloadBtn);
 			archiveDownloadReport();
 			
-			
-			
-			
+					
 		}
-		
+		Thread.sleep(5000);
 		
 		
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+		
 }
